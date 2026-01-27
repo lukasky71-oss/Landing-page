@@ -32,7 +32,7 @@
             overflow-x: hidden;
         }
 
-        /* POPUP DE NOTIFICAÇÃO (MELHORADO) */
+        /* POPUP DE NOTIFICAÇÃO */
         #notif-compra {
             position: fixed;
             bottom: 20px;
@@ -52,7 +52,7 @@
         #notif-compra.show { transform: translateX(0); }
         .notif-check { background: #22c55e; color: white; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: bold; }
 
-        /* BARRA DE URGÊNCIA PSICOLÓGICA */
+        /* BARRA DE URGÊNCIA */
         .top-bar {
             background: linear-gradient(90deg, #b8860b, var(--gold), #b8860b);
             color: #000;
@@ -124,7 +124,6 @@
             padding-left: 15px;
         }
 
-        /* TIMER AGRESSIVO */
         .timer-container {
             background: #111;
             border: 2px solid var(--danger);
@@ -156,7 +155,6 @@
 
         .old-price { font-size: 20px; color: #555; text-decoration: line-through; }
         .new-price { font-size: 68px; font-weight: 900; color: var(--gold); line-height: 1; display: block; }
-        .cents { font-size: 30px; vertical-align: top; }
 
         .cta {
             display: block;
@@ -175,9 +173,9 @@
         }
 
         @keyframes pulse-button {
-            0% { transform: scale(1); box-shadow: 0 0 20px rgba(212,175,55,0.4); }
-            50% { transform: scale(1.02); box-shadow: 0 0 50px rgba(212,175,55,0.6); }
-            100% { transform: scale(1); box-shadow: 0 0 20px rgba(212,175,55,0.4); }
+            0% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+            100% { transform: scale(1); }
         }
 
         .hero img {
@@ -187,7 +185,6 @@
             transform: perspective(1000px) rotateY(-5deg);
         }
 
-        /* PRÉVIA DO PRODUTO (GALERIA MAIOR) */
         .preview-section {
             background: var(--black);
             padding: 60px 0;
@@ -220,12 +217,6 @@
             transition: 0.5s;
         }
 
-        .image-gallery img:hover {
-            border-color: var(--gold);
-            transform: translateY(-10px);
-        }
-
-        /* BENEFÍCIOS */
         .benefits { padding: 100px 20px; background: #080808; border-top: 1px solid #111; }
         .section-title { text-align: center; margin-bottom: 60px; }
         .section-title h2 { font-size: 48px; font-weight: 900; text-transform: uppercase; }
@@ -243,24 +234,11 @@
             border: 1px solid #1a1a1a;
             padding: 40px;
             border-radius: 20px;
-            position: relative;
-            overflow: hidden;
         }
 
-        .card::before {
-            content: "";
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 4px;
-            background: var(--gold);
-            opacity: 0;
-            transition: 0.3s;
-        }
-
-        .card:hover::before { opacity: 1; }
         .card h3 { font-size: 22px; margin-bottom: 10px; color: var(--gold); }
         .card p { color: #888; font-size: 15px; }
 
-        /* NOVO: SEÇÃO DE BÔNUS (VALOR PERCEBIDO) */
         .bonus-highlight {
             background: linear-gradient(rgba(212,175,55,0.05), transparent);
             padding: 80px 20px;
@@ -275,7 +253,6 @@
             border-radius: 20px;
         }
 
-        /* TESTEMUNHOS */
         .testimonials { padding: 80px 20px; }
         .testimonial-grid {
             display: grid;
@@ -292,7 +269,6 @@
         }
         .stars { color: var(--gold); margin-bottom: 10px; display: block; }
 
-        /* GARANTIA (CONFIANÇA) */
         .guarantee-box {
             max-width: 800px;
             margin: 60px auto;
@@ -305,7 +281,6 @@
             border: 1px solid #222;
         }
 
-        /* FAQ */
         .faq { padding: 80px 20px; max-width: 900px; margin: auto; }
         details {
             background: #0c0c0c;
@@ -324,17 +299,6 @@
             border-top: 1px solid #111;
             background: #000;
         }
-
-        /* ADICIONAL: ESTILOS UPSELL E WHATSAPP */
-        .upsell-section { padding: 80px 20px; background: #000; text-align: center; border-top: 1px solid #1a1a1a; }
-        .upsell-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; max-width: 1100px; margin: 40px auto; }
-        .upsell-card { background: #0c0c0c; border: 1px solid #222; padding: 30px; border-radius: 20px; text-align: left; transition: 0.3s; }
-        .upsell-card:hover { border-color: var(--gold); }
-        .upsell-tag { background: var(--gold); color: #000; font-size: 10px; font-weight: 900; padding: 4px 10px; border-radius: 4px; display: inline-block; margin-bottom: 10px; }
-        .upsell-price { font-size: 24px; font-weight: 900; color: #fff; display: block; margin: 15px 0; }
-        .btn-upsell { display: block; text-align: center; border: 1px solid var(--gold); color: var(--gold); padding: 12px; border-radius: 8px; text-decoration: none; font-weight: bold; transition: 0.3s; }
-        .btn-upsell:hover { background: var(--gold); color: #000; }
-        .whatsapp-float { position: fixed; bottom: 20px; right: 20px; background: #25d366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; text-decoration: none; z-index: 1000; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
 
         @media(max-width:900px){
             .container { grid-template-columns: 1fr; text-align: center; }
@@ -375,7 +339,7 @@
 
             <div class="price-box">
                 <span class="old-price">De R$ 197,00 por</span>
-                <span class="new-price">R$ 6,90<span class="cents"></span></span>
+                <span class="new-price">R$ 6,90</span>
             </div>
 
             <a href="#" class="cta">SIM! QUERO DOMINAR O ALGORITMO AGORA</a>
@@ -384,11 +348,8 @@
             </p>
         </div>
 
-        <div style="position: relative;">
+        <div>
             <img src="https://i.pinimg.com/736x/93/6a/31/936a314cae26aadccb14055fd7c17f6f.jpg" alt="Preview Luxury">
-            <div style="position: absolute; top: -20px; right: -20px; background: var(--danger); padding: 15px; border-radius: 50%; font-weight: 900; font-size: 12px; transform: rotate(15deg); box-shadow: 0 10px 20px rgba(0,0,0,0.5);">
-                96% OFF
-            </div>
         </div>
     </div>
 </section>
@@ -464,26 +425,6 @@
     </div>
 </section>
 
-<section class="upsell-section">
-    <h2 style="font-weight:900; margin-bottom:10px; text-transform: uppercase;">OFERTAS ESPECIAIS (SÓ HOJE)</h2>
-    <div class="upsell-grid">
-        <div class="upsell-card">
-            <span class="upsell-tag">MAIS VENDIDO</span>
-            <h4 style="color:var(--gold);">EDIÇÃO EXPRESSA</h4>
-            <p style="font-size:14px; color:#666; margin-top:10px;">Aprenda a editar seus vídeos em 10 minutos pelo celular.</p>
-            <span class="upsell-price">R$ 27,90</span>
-            <a href="#" class="btn-upsell">ADICIONAR AO PEDIDO</a>
-        </div>
-        <div class="upsell-card">
-            <span class="upsell-tag">LUCRO EXTRA</span>
-            <h4 style="color:var(--gold);">REVENDA PLR</h4>
-            <p style="font-size:14px; color:#666; margin-top:10px;">Venda este pack como se fosse seu e fique com 100% do lucro.</p>
-            <span class="upsell-price">R$ 47,00</span>
-            <a href="#" class="btn-upsell">ADICIONAR AO PEDIDO</a>
-        </div>
-    </div>
-</section>
-
 <section class="faq">
     <h2 style="text-align: center; margin-bottom: 40px; text-transform: uppercase;">PERGUNTAS CRÍTICAS</h2>
     <details>
@@ -514,15 +455,11 @@
     <img src="https://checkout.perfectpay.com.br/img/selos-seguranca.png" alt="Segurança" style="max-width: 300px; margin-top: 30px; filter: brightness(0) invert(1); opacity: 0.5;">
 </div>
 
-<a href="https://wa.me/SEUNUMERO" class="whatsapp-float" target="_blank">Wpp</a>
-
 <footer>
     <p>© 2026 • LUXURY LIFESTYLE PACK • EXCLUSIVIDADE ABSOLUTA</p>
-    <p style="font-size: 11px; margin-top: 15px; color: #333;">O sucesso depende do seu esforço. Não garantimos ganhos sem trabalho.</p>
 </footer>
 
 <script>
-    // Gerenciador de Vagas e Compras
     let totalVagas = 7;
     const compradores = ["Marcos S.", "Ana Julia", "Felipe K.", "Gustavo O.", "Renata L.", "Lucas P.", "Breno M."];
 
@@ -530,15 +467,12 @@
         if (totalVagas > 1) {
             const nome = compradores[Math.floor(Math.random() * compradores.length)];
             document.getElementById('comprador-nome').innerText = nome;
-            
             const box = document.getElementById('notif-compra');
             box.classList.add('show');
-            
             totalVagas--;
             document.getElementById('vagas-topo').innerText = totalVagas;
             document.getElementById('vagas-faq').innerText = totalVagas;
             document.getElementById('vagas-bonus').innerText = totalVagas;
-
             setTimeout(() => { box.classList.remove('show'); }, 4000);
         }
     }
@@ -557,11 +491,8 @@
 
     window.onload = function () {
         startTimer(60 * 14 + 59, document.querySelector('#timer'));
-        
-        // Simular primeira compra após 6 segundos
         setTimeout(() => {
             registrarVenda();
-            // Próximas compras em intervalos aleatórios entre 15 e 30 segundos
             setInterval(registrarVenda, Math.random() * (30000 - 15000) + 15000);
         }, 6000);
     };
