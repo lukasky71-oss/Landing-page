@@ -13,8 +13,9 @@
   --bg2:#0c0c0c;
   --gold:#d4af37;
   --gold-light:#f2d479;
+  --gold-soft:rgba(212,175,55,.15);
   --text:#f1f1f1;
-  --muted:#9a9a9a;
+  --muted:#a0a0a0;
   --danger:#ff4d4d;
 }
 
@@ -26,7 +27,7 @@
 }
 
 body{
-  background:var(--bg);
+  background:radial-gradient(circle at top, #0c0c0c, #000);
   color:var(--text);
   line-height:1.7;
   overflow-x:hidden;
@@ -41,14 +42,15 @@ section{
   margin:0 auto;
 }
 
-/* BARRA DE URGÊNCIA (MENOR E DISCRETA) */
+/* BARRA DE URGÊNCIA */
 .urgency-bar{
-  background:#111;
+  background:linear-gradient(90deg,#000,#111);
   color:#fff;
   text-align:center;
   font-size:13px;
   padding:10px;
-  letter-spacing:0.5px;
+  letter-spacing:.6px;
+  border-bottom:1px solid var(--gold-soft);
 }
 .urgency-bar strong{
   color:var(--gold);
@@ -57,46 +59,69 @@ section{
 /* HERO */
 .hero{
   text-align:center;
+  position:relative;
 }
+
 .hero h1{
-  font-size:42px;
+  font-size:44px;
   font-weight:800;
-  margin-bottom:25px;
+  margin-bottom:20px;
 }
 .hero h1 span{
-  color:var(--gold);
+  background:linear-gradient(135deg,var(--gold),var(--gold-light));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
 }
+
 .subtitle{
-  max-width:700px;
-  margin:0 auto 40px;
+  max-width:720px;
+  margin:0 auto 45px;
   font-size:18px;
   color:var(--muted);
 }
 
+/* PREVIEW IMAGE */
+.preview-box{
+  max-width:720px;
+  margin:0 auto 60px;
+  border-radius:22px;
+  overflow:hidden;
+  box-shadow:0 0 0 1px var(--gold-soft), 0 25px 80px rgba(212,175,55,.15);
+}
+.preview-box img{
+  width:100%;
+  display:block;
+}
+
 /* LISTA */
 .list{
-  max-width:700px;
+  max-width:720px;
   margin:40px auto;
+  text-align:left;
 }
 .list li{
   list-style:none;
-  margin-bottom:15px;
+  margin-bottom:16px;
   font-size:16px;
+  padding-left:28px;
+  position:relative;
 }
 .list li::before{
-  content:"✔";
+  content:"✦";
+  position:absolute;
+  left:0;
   color:var(--gold);
-  margin-right:10px;
 }
 
 /* PREÇOS */
 .price-section{
-  background:var(--bg2);
-  border-radius:20px;
-  padding:50px 35px;
-  max-width:550px;
-  margin:60px auto;
+  background:linear-gradient(180deg,#0e0e0e,#070707);
+  border-radius:22px;
+  padding:55px 40px;
+  max-width:560px;
+  margin:70px auto;
   text-align:center;
+  box-shadow:0 0 0 1px var(--gold-soft), 0 40px 90px rgba(0,0,0,.8);
 }
 
 .old-price{
@@ -106,10 +131,12 @@ section{
 }
 
 .new-price{
-  font-size:46px;
+  font-size:48px;
   font-weight:800;
-  color:var(--gold);
-  margin:15px 0;
+  background:linear-gradient(135deg,var(--gold),var(--gold-light));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  margin:18px 0;
 }
 
 .installments{
@@ -119,38 +146,55 @@ section{
 
 .cta{
   display:block;
-  margin:35px auto 15px;
+  margin:40px auto 15px;
   background:linear-gradient(135deg,var(--gold),var(--gold-light));
   color:#000;
-  padding:20px;
-  border-radius:14px;
+  padding:22px;
+  border-radius:16px;
   text-decoration:none;
-  font-weight:700;
+  font-weight:800;
   font-size:18px;
-  max-width:320px;
+  max-width:340px;
+  box-shadow:0 15px 40px rgba(212,175,55,.35);
   transition:.3s;
 }
 .cta:hover{
-  transform:scale(1.05);
+  transform:translateY(-2px) scale(1.03);
 }
 
 .secure{
   font-size:13px;
-  color:#777;
+  color:#888;
 }
 
-/* BÔNUS */
+/* SEÇÕES */
+h2{
+  text-align:center;
+  font-size:32px;
+  margin-bottom:20px;
+}
+h2::after{
+  content:"";
+  display:block;
+  width:80px;
+  height:3px;
+  background:linear-gradient(90deg,var(--gold),transparent);
+  margin:18px auto 0;
+}
+
+/* CARDS */
 .grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
   gap:30px;
-  margin-top:50px;
+  margin-top:60px;
 }
 
 .card{
   background:#0f0f0f;
-  border-radius:18px;
-  padding:35px;
+  border-radius:20px;
+  padding:38px;
+  box-shadow:0 0 0 1px var(--gold-soft);
 }
 .card h3{
   color:var(--gold);
@@ -159,7 +203,7 @@ section{
 }
 .card p{
   font-size:15px;
-  color:#cfcfcf;
+  color:#d0d0d0;
 }
 
 /* AVALIAÇÕES */
@@ -167,13 +211,14 @@ section{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
   gap:30px;
-  margin-top:50px;
+  margin-top:60px;
 }
 
 .t-card{
   background:#0f0f0f;
-  border-radius:18px;
+  border-radius:20px;
   padding:30px;
+  box-shadow:0 0 0 1px var(--gold-soft);
 }
 .t-card p{
   font-size:15px;
@@ -186,22 +231,22 @@ section{
 
 /* GARANTIA */
 .guarantee{
-  background:#0c0c0c;
-  border-radius:20px;
-  padding:45px;
+  background:linear-gradient(180deg,#0f0f0f,#090909);
+  border-radius:22px;
+  padding:50px;
   text-align:center;
-  max-width:700px;
+  max-width:720px;
   margin:0 auto;
+  box-shadow:0 0 0 1px var(--gold-soft);
 }
 .guarantee h2{
-  color:var(--gold);
-  margin-bottom:20px;
+  margin-bottom:18px;
 }
 
 /* MOBILE */
 @media(max-width:768px){
-  .hero h1{font-size:34px;}
-  .new-price{font-size:40px;}
+  .hero h1{font-size:36px;}
+  .new-price{font-size:42px;}
   section{padding:80px 18px;}
 }
 </style>
@@ -216,9 +261,15 @@ section{
 <section class="hero">
   <div class="container">
     <h1>Luxury Lifestyle <span>Pack</span></h1>
+
     <p class="subtitle">
-      O maior banco de vídeos e imagens de ostentação para quem quer dominar o algoritmo e vender todos os dias.
+      Conteúdos prontos de ostentação para dominar o algoritmo, gerar desejo e vender todos os dias.
     </p>
+
+    <!-- IMAGEM DE PRÉVIA -->
+    <div class="preview-box">
+      <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f" alt="Preview do Conteúdo">
+    </div>
 
     <ul class="list">
       <li>+5.000 vídeos lifestyle gringo</li>
@@ -240,7 +291,7 @@ section{
 
 <section>
   <div class="container">
-    <h2 style="text-align:center;">O que você vai receber</h2>
+    <h2>O que você vai receber</h2>
 
     <div class="grid">
       <div class="card">
@@ -250,12 +301,12 @@ section{
 
       <div class="card">
         <h3>🎁 Bônus Exclusivos</h3>
-        <p>Capas, copies prontas e estratégias de viralização.</p>
+        <p>Capas, copies prontas e estratégias para viralizar mais rápido.</p>
       </div>
 
       <div class="card">
         <h3>⚡ Atualizações</h3>
-        <p>Novo conteúdo adicionado frequentemente sem custo.</p>
+        <p>Novos conteúdos adicionados frequentemente sem custo extra.</p>
       </div>
     </div>
   </div>
@@ -263,7 +314,7 @@ section{
 
 <section>
   <div class="container">
-    <h2 style="text-align:center;">Avaliações reais</h2>
+    <h2>Avaliações reais</h2>
 
     <div class="testimonial-grid">
       <div class="t-card">
@@ -272,12 +323,12 @@ section{
       </div>
 
       <div class="t-card">
-        <p>“Conteúdo absurdo pelo preço, vale cada centavo.”</p>
+        <p>“Conteúdo absurdo pelo preço, muito acima do esperado.”</p>
         <strong>— Lucas M.</strong>
       </div>
 
       <div class="t-card">
-        <p>“Facilitou muito minha criação de conteúdo.”</p>
+        <p>“Facilitou demais minha criação de conteúdo.”</p>
         <strong>— André C.</strong>
       </div>
     </div>
@@ -288,7 +339,7 @@ section{
   <div class="container">
     <div class="guarantee">
       <h2>Garantia total</h2>
-      <p>Se não gostar, é só pedir reembolso. Risco zero.</p>
+      <p>Se não gostar, é só pedir reembolso. Você não corre risco algum.</p>
     </div>
   </div>
 </section>
