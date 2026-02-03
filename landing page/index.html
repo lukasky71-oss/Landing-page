@@ -2,127 +2,359 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Luxury Lifestyle Pack | Mobile First</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Luxury Lifestyle Pack | Domine o Algoritmo</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
 
 <style>
-:root{
---black:#050505;--gold:#d4af37;--text:#f1f1f1;--muted:#8a8a8a;--danger:#ff4d4d;
+:root {
+    --black:#050505;
+    --dark:#0c0c0c;
+    --gold:#d4af37;
+    --gold-light:#f2d479;
+    --text:#f1f1f1;
+    --muted:#8a8a8a;
+    --danger:#ff4d4d;
 }
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif}
-body{background:var(--black);color:var(--text);line-height:1.5;-webkit-font-smoothing:antialiased}
-img{max-width:100%;display:block}
-a{color:inherit}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Inter',sans-serif;
+}
+
+html{scroll-behavior:smooth;}
+
+body{
+    background:var(--black);
+    color:var(--text);
+    line-height:1.75;
+    overflow-x:hidden;
+    font-size:16px;
+}
+
+p{margin-bottom:20px;}
+
+section{
+    padding:100px 20px;
+}
+
+section + section{
+    margin-top:40px;
+}
 
 /* TOP BAR */
-.top-bar{position:sticky;top:0;z-index:999;background:linear-gradient(90deg,#b8860b,var(--gold));color:#000;padding:10px;font-size:12px;font-weight:900;text-align:center}
+.top-bar{
+    background:linear-gradient(90deg,#b8860b,var(--gold),#b8860b);
+    color:#000;
+    text-align:center;
+    padding:14px;
+    font-weight:900;
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
 
 /* HERO */
-.hero{padding:32px 16px;background:linear-gradient(rgba(5,5,5,.85),rgba(5,5,5,1)),url('https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=1800');background-size:cover;background-position:center}
-.container{max-width:1100px;margin:auto;display:flex;flex-direction:column;gap:28px}
+.hero{
+    background:linear-gradient(rgba(5,5,5,.8),rgba(5,5,5,1)),
+    url("https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=1800&auto=format&fit=crop");
+    background-size:cover;
+    background-position:center;
+}
 
-.badge{align-self:center;background:rgba(212,175,55,.15);border:1px solid var(--gold);color:var(--gold);padding:8px 16px;border-radius:6px;font-size:11px;font-weight:900}
+.container{
+    max-width:1200px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:1.2fr .8fr;
+    gap:60px;
+    align-items:center;
+}
 
-h1{font-size:clamp(26px,7vw,44px);font-weight:900;text-align:center;line-height:1.1;text-transform:uppercase}
-h1 span{color:var(--gold)}
-.subtitle{font-size:16px;color:#ccc;text-align:center}
+.badge{
+    background:rgba(212,175,55,.1);
+    border:1px solid var(--gold);
+    color:var(--gold);
+    padding:10px 24px;
+    border-radius:6px;
+    font-weight:900;
+    display:inline-block;
+    margin-bottom:30px;
+}
 
-.timer-container{align-self:center;border:2px solid var(--danger);padding:12px 20px;border-radius:12px;text-align:center}
-#timer{font-size:32px;font-weight:900;font-family:monospace}
+h1{
+    font-size:clamp(32px,5vw,64px);
+    font-weight:900;
+    line-height:1.1;
+    margin-bottom:40px;
+    text-transform:uppercase;
+}
 
-.price-box{text-align:center}
-.old-price{color:#666;font-size:14px;text-decoration:line-through}
-.new-price{font-size:52px;color:var(--gold);font-weight:900}
+h1 span{color:var(--gold);}
 
-.cta{position:sticky;bottom:12px;margin-top:16px;background:linear-gradient(180deg,#f2d479,#d4af37);color:#000;padding:18px;font-size:18px;font-weight:900;text-align:center;border-radius:14px;text-decoration:none;box-shadow:0 0 30px rgba(212,175,55,.45)}
+.subtitle{
+    font-size:22px;
+    color:#ccc;
+    border-left:4px solid var(--gold);
+    padding-left:18px;
+    margin-bottom:45px;
+}
 
-.hero-img{border-radius:14px;border:1px solid #222}
+.timer-container{
+    background:#111;
+    border:2px solid var(--danger);
+    padding:22px 30px;
+    border-radius:14px;
+    margin:40px 0;
+    display:inline-flex;
+    flex-direction:column;
+    align-items:center;
+}
 
-/* GALLERY */
-.preview-section{padding:40px 16px;text-align:center}
-.image-gallery{display:grid;grid-template-columns:1fr;gap:16px}
-.image-gallery img{height:260px;object-fit:cover;border-radius:14px}
+#timer{
+    font-size:42px;
+    font-weight:900;
+    font-family:monospace;
+}
+
+.price-box{margin:45px 0;}
+.old-price{color:#555;text-decoration:line-through;}
+.new-price{font-size:68px;font-weight:900;color:var(--gold);}
+
+.cta{
+    display:block;
+    background:linear-gradient(180deg,var(--gold-light),var(--gold));
+    color:#000;
+    padding:28px;
+    font-size:24px;
+    font-weight:900;
+    border-radius:14px;
+    text-align:center;
+    text-decoration:none;
+    box-shadow:0 0 40px rgba(212,175,55,.4);
+}
+
+.hero img{
+    width:100%;
+    border-radius:16px;
+    border:1px solid #333;
+}
+
+/* PREVIEW */
+.preview-section{text-align:center;}
+.preview-title{
+    margin-bottom:40px;
+    letter-spacing:4px;
+    color:var(--gold);
+}
+.image-gallery{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:30px;
+    max-width:1100px;
+    margin:auto;
+}
+.image-gallery img{
+    width:100%;
+    height:300px;
+    object-fit:cover;
+    border-radius:16px;
+}
 
 /* BENEFITS */
-.benefits{padding:48px 16px;background:#080808}
-.section-title{text-align:center;margin-bottom:32px}
-.section-title h2{font-size:28px;font-weight:900}
-.grid{display:grid;grid-template-columns:1fr;gap:16px}
-.card{background:#0f0f0f;border:1px solid #1a1a1a;padding:24px;border-radius:18px}
-.card h3{color:var(--gold);font-size:18px;margin-bottom:6px}
-.card p{font-size:14px;color:#aaa}
+.benefits{background:#080808;}
+.section-title{text-align:center;margin-bottom:70px;}
+.section-title h2{font-size:48px;font-weight:900;}
+
+.grid{
+    max-width:1100px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:35px;
+}
+
+.card{
+    background:#0c0c0c;
+    border:1px solid #1a1a1a;
+    padding:45px 35px;
+    border-radius:22px;
+}
+
+.card h3{color:var(--gold);margin-bottom:15px;}
+.card p{font-size:16px;color:#aaa;line-height:1.8;}
+
+/* BONUS */
+.bonus-highlight{text-align:center;}
+.bonus-box{
+    border:2px dashed var(--gold);
+    max-width:800px;
+    margin:auto;
+    padding:45px 30px;
+    border-radius:22px;
+}
 
 /* TESTIMONIALS */
-.testimonials{padding:48px 16px}
-.testimonial-grid{display:grid;grid-template-columns:1fr;gap:16px}
-.t-card{background:#111;padding:20px;border-radius:14px;border:1px solid #222}
+.testimonial-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:35px;
+    max-width:1100px;
+    margin:auto;
+}
+.t-card{
+    background:#111;
+    padding:35px;
+    border-radius:16px;
+    border:1px solid #222;
+}
+.stars{color:var(--gold);margin-bottom:12px;display:block;}
 
 /* FAQ */
-.faq{padding:48px 16px}
-details{background:#0c0c0c;border:1px solid #1a1a1a;border-radius:12px;padding:18px;margin-bottom:12px}
-summary{font-weight:700;font-size:16px}
+.faq{max-width:900px;margin:auto;}
+details{
+    background:#0c0c0c;
+    padding:32px;
+    border-radius:16px;
+    margin-bottom:20px;
+    border:1px solid #1a1a1a;
+}
+summary{font-size:18px;font-weight:700;cursor:pointer;}
 
-/* DESKTOP */
-@media(min-width:900px){
-.container{flex-direction:row;align-items:center}
-.image-gallery{grid-template-columns:repeat(3,1fr)}
-.grid{grid-template-columns:repeat(3,1fr)}
-.testimonial-grid{grid-template-columns:repeat(3,1fr)}
-.cta{position:static;max-width:520px;margin:auto}
+/* GUARANTEE */
+.guarantee-box{
+    max-width:800px;
+    margin:60px auto;
+    display:flex;
+    gap:30px;
+    background:#111;
+    padding:45px;
+    border-radius:20px;
+    border:1px solid #222;
+}
+
+/* MOBILE */
+@media(max-width:900px){
+    .container{
+        grid-template-columns:1fr;
+        text-align:center;
+    }
+
+    .subtitle{
+        border:none;
+        padding-left:0;
+        font-size:18px;
+        line-height:1.9;
+    }
+
+    .cta{
+        font-size:20px;
+        padding:26px 20px;
+    }
+
+    .guarantee-box{
+        flex-direction:column;
+        text-align:center;
+    }
 }
 </style>
 </head>
+
 <body>
 
-<div class="top-bar">⚠️ ÚLTIMAS 7 LICENÇAS COM 96% OFF</div>
+<div class="top-bar">⚠️ ÚLTIMAS <span id="vagas-topo">7</span> LICENÇAS COM 96% DE DESCONTO</div>
 
 <section class="hero">
 <div class="container">
 <div>
-<span class="badge">🔥 ACESSO IMEDIATO</span>
+<span class="badge">🔥 ACESSO IMEDIATO & VITALÍCIO</span>
 <h1>PARE DE TENTAR.<br><span>COMECE A VIRALIZAR.</span></h1>
-<p class="subtitle">Use o mesmo banco de vídeos dos milionários americanos e monetize sem aparecer.</p>
-<div class="timer-container"><div id="timer">14:59</div></div>
-<div class="price-box"><div class="old-price">De R$197</div><div class="new-price">R$6,90</div></div>
-<a href="#" class="cta">QUERO DOMINAR O ALGORITMO</a>
+
+<p class="subtitle">
+Crie canais Dark e perfis de autoridade que geram <strong>milhares de reais</strong>
+usando o mesmo banco de vídeos dos multimilionários americanos.
+</p>
+
+<div class="timer-container">
+<div id="timer">14:59</div>
 </div>
-<img class="hero-img" src="https://i.pinimg.com/736x/93/6a/31/936a314cae26aadccb14055fd7c17f6f.jpg" alt="Preview">
+
+<div class="price-box">
+<span class="old-price">De R$ 197,00 por</span>
+<span class="new-price">R$ 6,90</span>
+</div>
+
+<a href="#" class="cta">SIM! QUERO DOMINAR O ALGORITMO AGORA</a>
+</div>
+
+<div>
+<img src="https://i.pinimg.com/736x/93/6a/31/936a314cae26aadccb14055fd7c17f6f.jpg">
+</div>
 </div>
 </section>
 
 <section class="preview-section">
+<p class="preview-title">PRÉVIA DO CONTEÚDO PREMIUM</p>
 <div class="image-gallery">
-<img src="https://i.pinimg.com/736x/a7/76/47/a77647d076459f3a3210305739a3bb88.jpg">
 <img src="https://i.pinimg.com/736x/e6/8e/a9/e68ea9751a959f2a47854adf0a86cb8f.jpg">
-<img src="https://i.pinimg.com/1200x/cf/b0/04/cfb00400b052100d6e17af43cf246080.jpg">
 </div>
 </section>
 
 <section class="benefits">
-<div class="section-title"><h2>VOCÊ RECEBE</h2></div>
+<div class="section-title">
+<h2>VOCÊ RECEBE HOJE</h2>
+</div>
+
 <div class="grid">
-<div class="card"><h3>30K+ Vídeos</h3><p>Banco premium lifestyle gringo.</p></div>
-<div class="card"><h3>Viralização</h3><p>Estratégia pronta para Reels e Shorts.</p></div>
-<div class="card"><h3>Revenda</h3><p>Fique com até 80% do lucro.</p></div>
+<div class="card"><h3>BANCO 30K+</h3><p>Biblioteca com mais de 30 mil vídeos premium.</p></div>
+<div class="card"><h3>HACKS DE VIRALIZAÇÃO</h3><p>Estratégias para forçar o algoritmo.</p></div>
+<div class="card"><h3>ESTRUTURA DE VENDAS</h3><p>Transforme views em dinheiro.</p></div>
+<div class="card"><h3>ATUALIZAÇÕES</h3><p>Novos vídeos toda semana.</p></div>
+<div class="card"><h3>BÔNUS VIP</h3><p>Presets cinematográficos premium.</p></div>
+<div class="card"><h3>REVENDA</h3><p>Venda o pack e fique com 80%.</p></div>
+</div>
+</section>
+
+<section class="bonus-highlight">
+<div class="bonus-box">
+<h2 style="color:var(--gold)">🎁 BÔNUS EXCLUSIVO</h2>
+<p>Guia de copys de alta conversão incluso hoje.</p>
 </div>
 </section>
 
 <section class="testimonials">
+<div class="section-title"><h2>RESULTADOS REAIS</h2></div>
 <div class="testimonial-grid">
-<div class="t-card">★★★★★<br>"1M views em 3 dias."</div>
-<div class="t-card">★★★★★<br>"Parece perfil gringo."</div>
-<div class="t-card">★★★★★<br>"Já se pagou."</div>
+<div class="t-card"><span class="stars">★★★★★</span><p>“1.2M de views em 3 dias.”</p></div>
+<div class="t-card"><span class="stars">★★★★★</span><p>“Mudou totalmente meu perfil.”</p></div>
+<div class="t-card"><span class="stars">★★★★★</span><p>“Qualidade absurda.”</p></div>
 </div>
 </section>
 
 <section class="faq">
-<details><summary>Funciona para iniciantes?</summary><p>Sim. Estrutura pronta.</p></details>
-<details><summary>Tem garantia?</summary><p>7 dias.</p></details>
+<h2 style="text-align:center;margin-bottom:40px;">PERGUNTAS</h2>
+<details><summary>É vitalício?</summary><p>Sim, acesso vitalício.</p></details>
+<details><summary>Tem garantia?</summary><p>7 dias de garantia total.</p></details>
 </section>
 
+<div class="guarantee-box">
+<img src="https://static-media.hotmart.com/mQemfalEi-q7h3vs20uP03MzDZo=/filters:quality(1):format(webp)/klickart-prod/uploads/media/file/7664479/compra_segura.png" style="width:120px;filter:invert(1);">
+<div>
+<h3 style="color:var(--gold)">GARANTIA DE 7 DIAS</h3>
+<p>Risco zero para você.</p>
+</div>
+</div>
+
 <script>
-let t=899;setInterval(()=>{let m=String(Math.floor(t/60)).padStart(2,'0');let s=String(t%60).padStart(2,'0');document.getElementById('timer').innerText=`${m}:${s}`;t--},1000);
+let t=899;
+setInterval(()=>{
+let m=Math.floor(t/60),s=t%60;
+document.getElementById("timer").innerText=
+`${m.toString().padStart(2,"0")}:${s.toString().padStart(2,"0")}`;
+t--; if(t<0)t=899;
+},1000);
 </script>
 
 </body>
