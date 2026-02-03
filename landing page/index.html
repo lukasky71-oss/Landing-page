@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Luxury Lifestyle Pack</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800;900&display=swap" rel="stylesheet">
 
 <style>
 :root{
@@ -13,264 +13,281 @@
   --gold-light:#f2d479;
   --bg:#050505;
   --card:#0f0f0f;
-  --text:#f1f1f1;
-  --muted:#9a9a9a;
+  --text:#eaeaea;
+  --muted:#bdbdbd;
 }
 
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:'Inter',sans-serif;
-}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Inter,Arial,sans-serif}
 
 body{
   background:
-    linear-gradient(rgba(5,5,5,.94), rgba(5,5,5,.98)),
+    linear-gradient(rgba(5,5,5,.93),rgba(5,5,5,.96)),
     url("https://images.unsplash.com/photo-1519681393784-d120267933ba");
   background-size:cover;
   background-position:center;
   background-attachment:fixed;
-  color:var(--text indicate);
   color:var(--text);
-  line-height:1.7;
 }
 
-section{
-  padding:90px 20px;
+/* ===== BARRA TOPO ===== */
+.top-bar{
+  background:linear-gradient(90deg,#000,var(--gold),#000);
+  color:#000;
+  text-align:center;
+  padding:8px;
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:.5px;
 }
 
+/* ===== CONTAINER ===== */
 .container{
   max-width:1100px;
   margin:auto;
+  padding:60px 20px;
 }
 
-/* TITULOS */
-.section-title{
-  text-align:center;
-  margin-bottom:60px;
+/* ===== HERO ===== */
+.hero{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:40px;
+  align-items:center;
 }
-.section-title h2{
-  font-size:32px;
+
+.hero h1{
+  font-size:42px;
   font-weight:900;
 }
-.section-title h2 span{
+
+.hero h1 span{
   color:var(--gold);
 }
 
-/* GRID */
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:30px;
-}
-
-/* CARDS */
-.card{
-  background:var(--card);
-  border:1px solid #1a1a1a;
-  border-radius:16px;
-  padding:30px;
-}
-.card h3{
-  color:var(--gold);
-  font-size:16px;
-  margin-bottom:10px;
-}
-.card p{
+.hero p{
   color:var(--muted);
-  font-size:14px;
+  margin-top:15px;
+  font-size:17px;
 }
 
-/* BONUS */
-.bonus-box{
-  max-width:700px;
-  margin:70px auto 0;
-  border:2px dashed var(--gold);
+.preview img{
+  width:100%;
   border-radius:18px;
-  padding:30px;
-  text-align:center;
-}
-.bonus-box h3{
-  color:var(--gold);
-  margin-bottom:10px;
-}
-.bonus-box p{
-  color:#ccc;
-  font-size:14px;
+  box-shadow:0 25px 80px rgba(0,0,0,.8);
 }
 
-/* TESTEMUNHOS */
-.testimonial-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:30px;
-}
-.t-card{
-  background:var(--card);
-  border-radius:16px;
-  padding:25px;
-  border:1px solid #1a1a1a;
-}
-.stars{
-  color:var(--gold);
-  margin-bottom:10px;
-}
-.t-card p{
-  font-size:14px;
-  color:#ccc;
-  margin-bottom:10px;
-}
-.t-card strong{
-  color:var(--gold);
-  font-size:13px;
+/* ===== PREÇO ===== */
+.price-box{
+  margin-top:35px;
+  background:linear-gradient(180deg,rgba(212,175,55,.18),rgba(0,0,0,.9));
+  border:2px solid rgba(212,175,55,.45);
+  border-radius:22px;
+  padding:35px 25px;
+  max-width:420px;
+  box-shadow:
+    0 0 0 1px rgba(212,175,55,.25),
+    0 25px 80px rgba(212,175,55,.35);
 }
 
-/* FAQ */
-.faq{
-  max-width:900px;
-  margin:auto;
-}
-details{
-  background:#0c0c0c;
-  border:1px solid #1a1a1a;
-  border-radius:12px;
-  padding:22px;
-  margin-bottom:18px;
-}
-summary{
-  cursor:pointer;
-  font-weight:700;
+.old-price{
+  text-decoration:line-through;
+  color:#aaa;
   font-size:15px;
 }
-details p{
-  margin-top:15px;
-  font-size:14px;
-  color:#bbb;
+
+.new-price{
+  font-size:58px;
+  font-weight:900;
+  background:linear-gradient(135deg,var(--gold-light),var(--gold));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
 }
 
-/* GARANTIA */
-.guarantee{
-  max-width:800px;
-  margin:auto;
-  background:#0c0c0c;
+.cta{
+  display:block;
+  margin-top:20px;
+  background:linear-gradient(180deg,var(--gold-light),var(--gold));
+  color:#000;
+  padding:22px;
+  font-size:20px;
+  font-weight:900;
+  border-radius:14px;
+  text-decoration:none;
+  text-align:center;
+  text-transform:uppercase;
+  box-shadow:0 0 25px rgba(212,175,55,.6);
+}
+
+.cta:hover{
+  transform:scale(1.03);
+}
+
+/* ===== SEÇÕES ===== */
+.section-title{
+  text-align:center;
+  font-size:28px;
+  margin-bottom:35px;
+}
+
+.cards{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:20px;
+}
+
+.card{
+  background:var(--card);
+  border:1px solid #1e1e1e;
+  border-radius:14px;
+  padding:22px;
+}
+
+.card h3{
+  color:var(--gold);
+  font-size:15px;
+  margin-bottom:10px;
+}
+
+.card p{
+  font-size:14px;
+  color:var(--muted);
+}
+
+/* ===== BONUS ===== */
+.bonus{
+  margin:50px auto;
+  max-width:700px;
+  border:2px dashed var(--gold);
   border-radius:18px;
-  padding:40px;
-  display:flex;
-  align-items:center;
-  gap:25px;
-  border:1px solid #1a1a1a;
+  padding:25px;
+  text-align:center;
 }
-.guarantee img{
-  width:90px;
+
+.bonus strong{
+  color:var(--gold);
 }
-.guarantee h3{
+
+/* ===== RESULTADOS ===== */
+.stars{
   color:var(--gold);
   margin-bottom:8px;
 }
-.guarantee p{
-  font-size:14px;
-  color:#bbb;
+
+/* ===== FAQ ===== */
+.faq{
+  max-width:800px;
+  margin:auto;
 }
 
-/* MOBILE */
-@media(max-width:768px){
-  .guarantee{
-    flex-direction:column;
-    text-align:center;
-  }
+details{
+  background:#0d0d0d;
+  border:1px solid #1f1f1f;
+  border-radius:10px;
+  padding:15px;
+  margin-bottom:10px;
+}
+
+summary{
+  cursor:pointer;
+  font-weight:600;
+}
+
+/* ===== GARANTIA ===== */
+.guarantee{
+  margin-top:60px;
+  background:#0b0b0b;
+  border-radius:14px;
+  padding:25px;
+  display:flex;
+  gap:20px;
+  align-items:center;
+}
+
+.guarantee img{
+  width:70px;
+}
+
+/* ===== MOBILE ===== */
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr}
+  .hero h1{font-size:32px}
 }
 </style>
 </head>
 
 <body>
 
-<!-- VOCÊ RECEBE HOJE -->
-<section>
-  <div class="container">
-    <div class="section-title">
-      <h2>VOCÊ RECEBE <span>HOJE</span></h2>
-    </div>
+<div class="top-bar">
+  ÚLTIMAS 1 LICENÇA COM 96% DE DESCONTO
+</div>
 
-    <div class="grid">
-      <div class="card">
-        <h3>BANCO 30K+</h3>
-        <p>Biblioteca com mais de 30 mil vídeos lifestyle gringo prontos para viralizar.</p>
-      </div>
+<div class="container">
 
-      <div class="card">
-        <h3>HACKS DE VIRALIZAÇÃO</h3>
-        <p>Estratégias práticas para forçar o algoritmo a entregar seu conteúdo.</p>
-      </div>
+  <!-- HERO -->
+  <section class="hero">
+    <div>
+      <h1>Domine o <span>Algoritmo</span> e Lucre Todos os Dias</h1>
+      <p>O pack definitivo para viralizar, vender e escalar no digital sem aparecer.</p>
 
-      <div class="card">
-        <h3>ESTRUTURA DE VENDAS</h3>
-        <p>Transforme visualizações em dinheiro todos os dias.</p>
-      </div>
-
-      <div class="card">
-        <h3>ATUALIZAÇÕES</h3>
-        <p>Novos vídeos adicionados semanalmente.</p>
-      </div>
-
-      <div class="card">
-        <h3>BÔNUS VIP</h3>
-        <p>Guia estratégico + presets premium de edição.</p>
-      </div>
-
-      <div class="card">
-        <h3>REVENDA</h3>
-        <p>Venda o pack e fique com até 80% do lucro.</p>
+      <div class="price-box">
+        <div class="old-price">De R$197,00</div>
+        <div class="new-price">R$6,90</div>
+        <a href="#" class="cta">Comprar agora</a>
       </div>
     </div>
 
-    <div class="bonus-box">
-      <h3>🎁 BÔNUS EXCLUSIVO</h3>
-      <p>Guia de copys de alta conversão para vender todos os dias.</p>
+    <div class="preview">
+      <img src="https://images.unsplash.com/photo-1605902711622-cfb43c4437d1" alt="Prévia do conteúdo">
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- RESULTADOS -->
-<section>
-  <div class="container">
-    <div class="section-title">
-      <h2>RESULTADOS <span>REAIS</span></h2>
+  <!-- VOCÊ RECEBE -->
+  <section style="margin-top:80px">
+    <h2 class="section-title">VOCÊ RECEBE HOJE</h2>
+
+    <div class="cards">
+      <div class="card"><h3>BANCO 30K+</h3><p>Biblioteca com mais de 30 mil vídeos prontos.</p></div>
+      <div class="card"><h3>HACKS DE VIRALIZAÇÃO</h3><p>Estratégias práticas para explodir o alcance.</p></div>
+      <div class="card"><h3>ESTRUTURA DE VENDAS</h3><p>Transforme visualizações em dinheiro.</p></div>
+      <div class="card"><h3>ATUALIZAÇÕES</h3><p>Novos vídeos adicionados semanalmente.</p></div>
+      <div class="card"><h3>BÔNUS VIP</h3><p>Guia estratégico + prompts prontos.</p></div>
+      <div class="card"><h3>REVENDA</h3><p>Venda o pack e fique com 80% do lucro.</p></div>
     </div>
 
-    <div class="testimonial-grid">
-      <div class="t-card">
+    <div class="bonus">
+      <strong>🎁 BÔNUS EXCLUSIVO</strong><br>
+      Guia de copy que converte para vender todos os dias.
+    </div>
+  </section>
+
+  <!-- RESULTADOS -->
+  <section>
+    <h2 class="section-title">RESULTADOS REAIS</h2>
+
+    <div class="cards">
+      <div class="card">
         <div class="stars">★★★★★</div>
-        <p>"Fiz minha primeira venda em menos de 24h."</p>
-        <strong>@lucasdark</strong>
+        <p>"Primeiras vendas em menos de 24h."</p>
       </div>
-
-      <div class="t-card">
+      <div class="card">
         <div class="stars">★★★★★</div>
-        <p>"Os vídeos são absurdamente profissionais."</p>
-        <strong>@viralhub</strong>
+        <p>"Os vídeos já vêm praticamente prontos."</p>
       </div>
-
-      <div class="t-card">
+      <div class="card">
         <div class="stars">★★★★★</div>
         <p>"Qualidade surreal pelo preço."</p>
-        <strong>@lifestyle.pro</strong>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- FAQ -->
-<section>
-  <div class="container">
-    <div class="section-title">
-      <h2>PERGUNTAS</h2>
-    </div>
+  <!-- FAQ -->
+  <section style="margin-top:60px">
+    <h2 class="section-title">PERGUNTAS</h2>
 
     <div class="faq">
       <details>
         <summary>É vitalício?</summary>
-        <p>Sim. Pagamento único com acesso para sempre.</p>
+        <p>Sim, acesso vitalício sem mensalidade.</p>
       </details>
 
       <details>
@@ -278,21 +295,18 @@ details p{
         <p>Você tem 7 dias para testar sem risco.</p>
       </details>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- GARANTIA -->
-<section>
-  <div class="container">
-    <div class="guarantee">
-      <img src="https://static-media.hotmart.com/mQemfalEi-q7h3vs20uP03MzDZo=/filters:quality(1):format(webp)/klickart-prod/uploads/media/file/7664479/compra_segura.png">
-      <div>
-        <h3>GARANTIA DE 7 DIAS</h3>
-        <p>Se não gostar, devolvemos 100% permitindo risco zero.</p>
-      </div>
+  <!-- GARANTIA -->
+  <div class="guarantee">
+    <img src="https://cdn-icons-png.flaticon.com/512/891/891419.png">
+    <div>
+      <strong>GARANTIA DE 7 DIAS</strong>
+      <p>Ou seu dinheiro de volta, sem perguntas.</p>
     </div>
   </div>
-</section>
+
+</div>
 
 </body>
 </html>
