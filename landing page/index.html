@@ -3,310 +3,303 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Luxury Lifestyle Pack</title>
+<title>Algoritmo Milionário</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800;900&display=swap" rel="stylesheet">
 
 <style>
 :root{
-  --gold:#d4af37;
-  --gold-light:#f2d479;
-  --bg:#050505;
-  --card:#0f0f0f;
-  --text:#eaeaea;
-  --muted:#bdbdbd;
+  --primary:#f5c76b;
+  --primary-dark:#d4a93a;
+  --bg:#070707;
+  --panel:#111;
+  --text:#f4f4f4;
+  --muted:#c7c7c7;
+  --accent:#1aff7c;
 }
 
 *{margin:0;padding:0;box-sizing:border-box;font-family:Inter,Arial,sans-serif}
 
 body{
   background:
-    linear-gradient(rgba(5,5,5,.93),rgba(5,5,5,.96)),
-    url("https://images.unsplash.com/photo-1519681393784-d120267933ba");
-  background-size:cover;
-  background-position:center;
-  background-attachment:fixed;
+    radial-gradient(circle at top,rgba(245,199,107,.08),transparent 40%),
+    #070707;
   color:var(--text);
+  font-size:18px;
+  line-height:1.7;
 }
 
-/* ===== BARRA TOPO ===== */
-.top-bar{
-  background:linear-gradient(90deg,#000,var(--gold),#000);
-  color:#000;
+/* ===== HEADER ===== */
+.header{
+  padding:18px;
   text-align:center;
-  padding:8px;
-  font-size:12px;
+  background:#000;
   font-weight:800;
-  letter-spacing:.5px;
+  font-size:15px;
+  color:var(--primary);
 }
 
 /* ===== CONTAINER ===== */
 .container{
-  max-width:1100px;
+  max-width:1200px;
   margin:auto;
-  padding:60px 20px;
+  padding:80px 22px;
 }
 
 /* ===== HERO ===== */
 .hero{
   display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:40px;
+  grid-template-columns:1.1fr .9fr;
+  gap:60px;
   align-items:center;
 }
 
-.hero h1{
-  font-size:42px;
-  font-weight:900;
+.tag{
+  display:inline-block;
+  background:rgba(245,199,107,.12);
+  border:1px solid rgba(245,199,107,.4);
+  color:var(--primary);
+  padding:8px 16px;
+  border-radius:999px;
+  font-size:14px;
+  font-weight:700;
+  margin-bottom:20px;
 }
 
-.hero h1 span{
-  color:var(--gold);
+.hero h1{
+  font-size:56px;
+  font-weight:900;
+  line-height:1.05;
 }
+
+.hero h1 span{color:var(--primary)}
 
 .hero p{
+  margin-top:20px;
+  font-size:22px;
   color:var(--muted);
-  margin-top:15px;
-  font-size:17px;
 }
 
-.preview img{
-  width:100%;
-  border-radius:18px;
-  box-shadow:0 25px 80px rgba(0,0,0,.8);
+.hero ul{
+  margin-top:28px;
+  list-style:none;
 }
 
-/* ===== PREÇO ===== */
-.price-box{
-  margin-top:35px;
-  background:linear-gradient(180deg,rgba(212,175,55,.18),rgba(0,0,0,.9));
-  border:2px solid rgba(212,175,55,.45);
-  border-radius:22px;
-  padding:35px 25px;
-  max-width:420px;
-  box-shadow:
-    0 0 0 1px rgba(212,175,55,.25),
-    0 25px 80px rgba(212,175,55,.35);
+.hero li{
+  font-size:18px;
+  margin-bottom:10px;
 }
 
-.old-price{
-  text-decoration:line-through;
-  color:#aaa;
-  font-size:15px;
-}
-
-.new-price{
-  font-size:58px;
+.hero li::before{
+  content:"→ ";
+  color:var(--primary);
   font-weight:900;
-  background:linear-gradient(135deg,var(--gold-light),var(--gold));
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
+}
+
+/* ===== CTA ===== */
+.offer{
+  margin-top:40px;
+  background:linear-gradient(180deg,rgba(245,199,107,.18),rgba(0,0,0,.9));
+  border:2px solid rgba(245,199,107,.45);
+  border-radius:26px;
+  padding:40px;
+  max-width:480px;
+}
+
+.old{
+  text-decoration:line-through;
+  color:#999;
+  font-size:18px;
+}
+
+.price{
+  font-size:70px;
+  font-weight:900;
+  color:var(--primary);
+  margin:10px 0;
 }
 
 .cta{
   display:block;
-  margin-top:20px;
-  background:linear-gradient(180deg,var(--gold-light),var(--gold));
+  margin-top:22px;
+  background:linear-gradient(180deg,var(--primary),var(--primary-dark));
   color:#000;
-  padding:22px;
-  font-size:20px;
+  padding:26px;
+  font-size:22px;
   font-weight:900;
-  border-radius:14px;
+  border-radius:18px;
+  text-align:center;
   text-decoration:none;
-  text-align:center;
   text-transform:uppercase;
-  box-shadow:0 0 25px rgba(212,175,55,.6);
 }
 
-.cta:hover{
-  transform:scale(1.03);
-}
-
-/* ===== SEÇÕES ===== */
-.section-title{
-  text-align:center;
-  font-size:28px;
-  margin-bottom:35px;
-}
-
-.cards{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:20px;
-}
-
-.card{
-  background:var(--card);
-  border:1px solid #1e1e1e;
-  border-radius:14px;
-  padding:22px;
-}
-
-.card h3{
-  color:var(--gold);
-  font-size:15px;
-  margin-bottom:10px;
-}
-
-.card p{
+.note{
+  margin-top:12px;
   font-size:14px;
+  color:#aaa;
+  text-align:center;
+}
+
+/* ===== VISUAL ===== */
+.visual{
+  background:#0d0d0d;
+  border-radius:28px;
+  padding:30px;
+  box-shadow:0 40px 120px rgba(0,0,0,.8);
+}
+
+.visual img{
+  width:100%;
+  border-radius:18px;
+}
+
+/* ===== SECTIONS ===== */
+.section{
+  margin-top:120px;
+}
+
+.section h2{
+  text-align:center;
+  font-size:42px;
+  margin-bottom:60px;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:28px;
+}
+
+.box{
+  background:var(--panel);
+  border:1px solid #1f1f1f;
+  border-radius:20px;
+  padding:30px;
+}
+
+.box h3{
+  color:var(--primary);
+  font-size:22px;
+  margin-bottom:12px;
+}
+
+.box p{
+  font-size:18px;
   color:var(--muted);
 }
 
-/* ===== BONUS ===== */
-.bonus{
-  margin:50px auto;
-  max-width:700px;
-  border:2px dashed var(--gold);
-  border-radius:18px;
-  padding:25px;
+/* ===== PROVA ===== */
+.quote{
   text-align:center;
+  font-size:20px;
 }
 
-.bonus strong{
-  color:var(--gold);
-}
-
-/* ===== RESULTADOS ===== */
 .stars{
-  color:var(--gold);
-  margin-bottom:8px;
+  color:var(--primary);
+  font-size:22px;
+  margin-bottom:10px;
 }
 
 /* ===== FAQ ===== */
-.faq{
-  max-width:800px;
-  margin:auto;
-}
-
 details{
   background:#0d0d0d;
-  border:1px solid #1f1f1f;
-  border-radius:10px;
-  padding:15px;
-  margin-bottom:10px;
+  border:1px solid #222;
+  border-radius:16px;
+  padding:22px;
+  margin-bottom:14px;
 }
 
 summary{
   cursor:pointer;
-  font-weight:600;
-}
-
-/* ===== GARANTIA ===== */
-.guarantee{
-  margin-top:60px;
-  background:#0b0b0b;
-  border-radius:14px;
-  padding:25px;
-  display:flex;
-  gap:20px;
-  align-items:center;
-}
-
-.guarantee img{
-  width:70px;
+  font-weight:700;
+  font-size:20px;
 }
 
 /* ===== MOBILE ===== */
 @media(max-width:900px){
   .hero{grid-template-columns:1fr}
-  .hero h1{font-size:32px}
+  .hero h1{font-size:38px}
+  .section h2{font-size:30px}
 }
 </style>
 </head>
 
 <body>
 
-<div class="top-bar">
-  ÚLTIMAS 1 LICENÇA COM 96% DE DESCONTO
+<div class="header">
+  ⚡ ACESSO IMEDIATO • OFERTA LIMITADA
 </div>
 
 <div class="container">
 
-  <!-- HERO -->
-  <section class="hero">
-    <div>
-      <h1>Domine o <span>Algoritmo</span> e Lucre Todos os Dias</h1>
-      <p>O pack definitivo para viralizar, vender e escalar no digital sem aparecer.</p>
+<section class="hero">
+  <div>
+    <div class="tag">Método para perfis anônimos</div>
 
-      <div class="price-box">
-        <div class="old-price">De R$197,00</div>
-        <div class="new-price">R$6,90</div>
-        <a href="#" class="cta">Comprar agora</a>
-      </div>
-    </div>
+    <h1>Ganhe Dinheiro<br><span>Usando o Algoritmo</span><br>a Seu Favor</h1>
 
-    <div class="preview">
-      <img src="https://images.unsplash.com/photo-1605902711622-cfb43c4437d1" alt="Prévia do conteúdo">
-    </div>
-  </section>
+    <p>Você não precisa criar conteúdo, aparecer ou entender marketing.  
+    Basta seguir o fluxo que já funciona.</p>
 
-  <!-- VOCÊ RECEBE -->
-  <section style="margin-top:80px">
-    <h2 class="section-title">VOCÊ RECEBE HOJE</h2>
+    <ul>
+      <li>Vídeos já validados</li>
+      <li>Estrutura pronta de postagem</li>
+      <li>Modelo de monetização testado</li>
+    </ul>
 
-    <div class="cards">
-      <div class="card"><h3>BANCO 30K+</h3><p>Biblioteca com mais de 30 mil vídeos prontos.</p></div>
-      <div class="card"><h3>HACKS DE VIRALIZAÇÃO</h3><p>Estratégias práticas para explodir o alcance.</p></div>
-      <div class="card"><h3>ESTRUTURA DE VENDAS</h3><p>Transforme visualizações em dinheiro.</p></div>
-      <div class="card"><h3>ATUALIZAÇÕES</h3><p>Novos vídeos adicionados semanalmente.</p></div>
-      <div class="card"><h3>BÔNUS VIP</h3><p>Guia estratégico + prompts prontos.</p></div>
-      <div class="card"><h3>REVENDA</h3><p>Venda o pack e fique com 80% do lucro.</p></div>
-    </div>
-
-    <div class="bonus">
-      <strong>🎁 BÔNUS EXCLUSIVO</strong><br>
-      Guia de copy que converte para vender todos os dias.
-    </div>
-  </section>
-
-  <!-- RESULTADOS -->
-  <section>
-    <h2 class="section-title">RESULTADOS REAIS</h2>
-
-    <div class="cards">
-      <div class="card">
-        <div class="stars">★★★★★</div>
-        <p>"Primeiras vendas em menos de 24h."</p>
-      </div>
-      <div class="card">
-        <div class="stars">★★★★★</div>
-        <p>"Os vídeos já vêm praticamente prontos."</p>
-      </div>
-      <div class="card">
-        <div class="stars">★★★★★</div>
-        <p>"Qualidade surreal pelo preço."</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- FAQ -->
-  <section style="margin-top:60px">
-    <h2 class="section-title">PERGUNTAS</h2>
-
-    <div class="faq">
-      <details>
-        <summary>É vitalício?</summary>
-        <p>Sim, acesso vitalício sem mensalidade.</p>
-      </details>
-
-      <details>
-        <summary>Tem garantia?</summary>
-        <p>Você tem 7 dias para testar sem risco.</p>
-      </details>
-    </div>
-  </section>
-
-  <!-- GARANTIA -->
-  <div class="guarantee">
-    <img src="https://cdn-icons-png.flaticon.com/512/891/891419.png">
-    <div>
-      <strong>GARANTIA DE 7 DIAS</strong>
-      <p>Ou seu dinheiro de volta, sem perguntas.</p>
+    <div class="offer">
+      <div class="old">De R$197,00</div>
+      <div class="price">R$6,90</div>
+      <a href="#" class="cta">Acessar agora</a>
+      <div class="note">Pagamento único • Acesso vitalício</div>
     </div>
   </div>
 
-</div>
+  <div class="visual">
+    <img src="https://images.unsplash.com/photo-1559526324-593bc073d938" alt="Resultados">
+  </div>
+</section>
 
+<section class="section">
+  <h2>O Que Você Vai Desbloquear</h2>
+
+  <div class="grid">
+    <div class="box"><h3>Banco Viral</h3><p>Conteúdos que já passaram no teste do algoritmo.</p></div>
+    <div class="box"><h3>Roteiro Invisível</h3><p>Poste sem aparecer e sem criar nada do zero.</p></div>
+    <div class="box"><h3>Funil Simples</h3><p>Do vídeo ao pagamento em poucos cliques.</p></div>
+    <div class="box"><h3>Escala</h3><p>Repita o processo em quantos perfis quiser.</p></div>
+  </div>
+</section>
+
+<section class="section">
+  <h2>O Que As Pessoas Dizem</h2>
+
+  <div class="grid">
+    <div class="box quote"><div class="stars">★★★★★</div><p>“Postei, vendi e escalei.”</p></div>
+    <div class="box quote"><div class="stars">★★★★★</div><p>“Nunca vi algo tão simples.”</p></div>
+    <div class="box quote"><div class="stars">★★★★★</div><p>“Isso é roubado de tão barato.”</p></div>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Dúvidas Rápidas</h2>
+
+  <details>
+    <summary>Preciso ter experiência?</summary>
+    <p>Não. É feito para iniciantes absolutos.</p>
+  </details>
+
+  <details>
+    <summary>Funciona para qualquer nicho?</summary>
+    <p>Sim, o método é adaptável.</p>
+  </details>
+
+  <details>
+    <summary>Tem garantia?</summary>
+    <p>7 dias de garantia total.</p>
+  </details>
+</section>
+
+</div>
 </body>
 </html>
