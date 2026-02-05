@@ -140,6 +140,65 @@ body{
   text-align:center;
 }
 
+/* UPSELL */
+.upsell{
+  margin-top:28px;
+  background:linear-gradient(180deg,rgba(26,255,124,.12),rgba(0,0,0,.95));
+  border:2px solid rgba(26,255,124,.45);
+  border-radius:20px;
+  padding:26px;
+}
+
+.upsell h3{
+  text-align:center;
+  color:var(--accent);
+  font-size:24px;
+  font-weight:900;
+  margin-bottom:10px;
+}
+
+.upsell p{
+  text-align:center;
+  color:var(--muted);
+  margin-bottom:14px;
+}
+
+.upsell ul{
+  list-style:none;
+  margin-bottom:16px;
+}
+
+.upsell li{
+  font-size:17px;
+  margin-bottom:6px;
+}
+
+.upsell li::before{
+  content:"➕ ";
+  color:var(--accent);
+  font-weight:900;
+}
+
+.upsell-price{
+  text-align:center;
+  font-size:42px;
+  font-weight:900;
+  color:var(--accent);
+  margin-bottom:14px;
+}
+
+.upsell-btn{
+  display:block;
+  text-align:center;
+  background:linear-gradient(180deg,var(--accent),#10d86a);
+  color:#000;
+  padding:20px;
+  font-size:20px;
+  font-weight:900;
+  border-radius:16px;
+  text-decoration:none;
+}
+
 /* VISUAL */
 .visual{
   background:#0d0d0d;
@@ -195,7 +254,7 @@ body{
   color:var(--muted);
 }
 
-/* PREVIA DO CONTEÚDO */
+/* PREVIA */
 .preview-grid{
   display:grid;
   grid-template-columns:repeat(3,1fr);
@@ -210,16 +269,8 @@ body{
 }
 
 /* PROVA */
-.quote{
-  text-align:center;
-  font-size:20px;
-}
-
-.stars{
-  color:var(--primary);
-  font-size:22px;
-  margin-bottom:10px;
-}
+.quote{text-align:center;font-size:20px}
+.stars{color:var(--primary);font-size:22px;margin-bottom:10px}
 
 /* FAQ */
 details{
@@ -248,9 +299,7 @@ summary{
 
 <body>
 
-<div class="header">
-  ⚡ ACESSO IMEDIATO • OFERTA LIMITADA
-</div>
+<div class="header">⚡ ACESSO IMEDIATO • OFERTA LIMITADA</div>
 
 <div class="container">
 
@@ -258,9 +307,9 @@ summary{
   <div>
     <div class="tag">Método para perfis anônimos</div>
 
-    <h1>Mais de<br><span>30+ videos gringos</span><br> para viralizar!</h1>
+    <h1>Mais de<br><span>30k  + vídeos       gringos</span><br>para viralizar!</h1>
 
-    <p>Você não precisa criar conteúdo, aparecer ou entender marketing.  
+    <p>Você não precisa criar conteúdo, aparecer ou entender marketing.<br>
     Basta seguir o fluxo que já funciona.</p>
 
     <ul>
@@ -274,17 +323,29 @@ summary{
       <div class="price">R$6,90</div>
       <a href="#" class="cta">Acessar agora</a>
       <div class="note">Pagamento único • Acesso vitalício</div>
+
+      <div class="upsell">
+        <h3>Upgrade Estratégico</h3>
+        <p>Escala mais rápida com o pacote completo</p>
+        <ul>
+          <li>Copys de alta conversão</li>
+          <li>Bancos organizados por nichos</li>
+          <li>Prompts prontos para rodar em IA</li>
+          <li>IA totalmente gratuita </li>
+        </ul>
+        <div class="upsell-price">R$14,90</div>
+        <a href="#" class="upsell-btn">Adicionar upgrade</a>
+      </div>
     </div>
   </div>
 
   <div class="visual">
-    <img src="https://i.pinimg.com/1200x/ad/64/6c/ad646c9aaddce9a8667ec74117664a4e.jpg" alt="Resultados">
+    <img src="https://i.pinimg.com/1200x/ad/64/6c/ad646c9aaddce9a8667ec74117664a4e.jpg">
   </div>
 </section>
 
 <section class="section">
   <h2>O Que Você Vai Desbloquear</h2>
-
   <div class="grid">
     <div class="box"><h3>Banco Viral</h3><p>Conteúdos que já passaram no teste do algoritmo.</p></div>
     <div class="box"><h3>Roteiro Invisível</h3><p>Poste sem aparecer e sem criar nada do zero.</p></div>
@@ -292,45 +353,30 @@ summary{
   </div>
 </section>
 
-<!-- PREVIA DO CONTEÚDO -->
 <section class="section">
   <h2>Prévia do Conteúdo</h2>
-  <p class="sub">Veja exatamente o tipo de material que você vai receber após a compra.</p>
-
+  <p class="sub">Veja exatamente o que você vai receber após a compra.</p>
   <div class="preview-grid">
-    <img src="https://i.pinimg.com/1200x/4d/00/fd/4d00fd18b013b4891f72e415645588e2.jpg" alt="Prévia 1">
-    <img src="https://i.pinimg.com/1200x/0e/c6/5e/0ec65ec3837ce8f37da9f3679ea9bbba.jpg" alt="Prévia 2">
-    <img src="https://i.pinimg.com/736x/90/eb/1c/90eb1c2d2574bf8b1caa4e081fafbb19.jpg" alt="Prévia 3">
+    <img src="https://i.pinimg.com/1200x/4d/00/fd/4d00fd18b013b4891f72e415645588e2.jpg">
+    <img src="https://i.pinimg.com/1200x/0e/c6/5e/0ec65ec3837ce8f37da9f3679ea9bbba.jpg">
+    <img src="https://i.pinimg.com/736x/90/eb/1c/90eb1c2d2574bf8b1caa4e081fafbb19.jpg">
   </div>
 </section>
 
 <section class="section">
   <h2>O Que As Pessoas Dizem</h2>
-
   <div class="grid">
-    <div class="box quote"><div class="stars">★★★★★ Rafael M. </div><p>“Entrei achando que era mais um curso genérico. Em 3 dias eu já tinha vídeo rodando e o perfil crescendo. O mais absurdo é que não precisei aparecer em nada.”</p></div>
-    <div class="box quote"><div class="stars">★★★★★ Camila S.</div><p>“Meu maior medo era gastar dinheiro e não conseguir aplicar. Aqui é impossível errar, porque o caminho já vem desenhado.”</p></div>
-    <div class="box quote"><div class="stars">★★★★★ Anderson N.</div><p>“Já comprei muita coisa na internet, mas isso aqui é diferente. Não tem enrolação, é direto ao ponto e funciona.”</p></div>
+    <div class="box quote"><div class="stars">★★★★★ Rafael M.</div><p>"Quem já tentou crescer perfil sozinho vai entender o valor disso aqui. É literalmente pegar algo que já funciona e só replicar"</p></div>
+    <div class="box quote"><div class="stars">★★★★★ Camila S.</div><p>“Não é sobre os vídeos. É sobre entender como o algoritmo pensa. Depois que você percebe isso, tudo fica óbvio. Esse material acelera meses de tentativa e erro.”</p></div>
+    <div class="box quote"><div class="stars">★★★★★ Anderson N.</div><p>“O preço não condiz com o impacto. Se isso custasse 197 eu ainda compraria.”</p></div>
   </div>
 </section>
 
 <section class="section">
   <h2>Dúvidas Rápidas</h2>
-
-  <details>
-    <summary>Preciso ter experiência?</summary>
-    <p>Não. É feito para iniciantes absolutos.</p>
-  </details>
-
-  <details>
-    <summary>Funciona para qualquer nicho?</summary>
-    <p>Sim, o método é adaptável.</p>
-  </details>
-
-  <details>
-    <summary>Tem garantia?</summary>
-    <p>7 dias de garantia total.</p>
-  </details>
+  <details><summary>Preciso ter experiência?</summary><p>Não. É para iniciantes.</p></details>
+  <details><summary>Funciona para qualquer nicho?</summary><p>Sim.</p></details>
+  <details><summary>Tem garantia?</summary><p>7 dias.</p></details>
 </section>
 
 </div>
