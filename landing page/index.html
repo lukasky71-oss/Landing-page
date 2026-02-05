@@ -29,7 +29,7 @@ body{
   line-height:1.7;
 }
 
-/* ===== HEADER ===== */
+/* HEADER */
 .header{
   padding:18px;
   text-align:center;
@@ -39,14 +39,14 @@ body{
   color:var(--primary);
 }
 
-/* ===== CONTAINER ===== */
+/* CONTAINER */
 .container{
   max-width:1200px;
   margin:auto;
   padding:80px 22px;
 }
 
-/* ===== HERO ===== */
+/* HERO */
 .hero{
   display:grid;
   grid-template-columns:1.1fr .9fr;
@@ -96,7 +96,7 @@ body{
   font-weight:900;
 }
 
-/* ===== CTA ===== */
+/* CTA */
 .offer{
   margin-top:40px;
   background:linear-gradient(180deg,rgba(245,199,107,.18),rgba(0,0,0,.9));
@@ -140,7 +140,7 @@ body{
   text-align:center;
 }
 
-/* ===== VISUAL ===== */
+/* VISUAL */
 .visual{
   background:#0d0d0d;
   border-radius:28px;
@@ -153,7 +153,7 @@ body{
   border-radius:18px;
 }
 
-/* ===== SECTIONS ===== */
+/* SECTIONS */
 .section{
   margin-top:120px;
 }
@@ -161,7 +161,14 @@ body{
 .section h2{
   text-align:center;
   font-size:42px;
-  margin-bottom:60px;
+  margin-bottom:18px;
+}
+
+.section p.sub{
+  text-align:center;
+  color:var(--muted);
+  max-width:700px;
+  margin:0 auto 60px;
 }
 
 .grid{
@@ -188,7 +195,21 @@ body{
   color:var(--muted);
 }
 
-/* ===== PROVA ===== */
+/* PREVIA DO CONTEÚDO */
+.preview-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:26px;
+}
+
+.preview-grid img{
+  width:100%;
+  border-radius:20px;
+  border:1px solid rgba(245,199,107,.25);
+  box-shadow:0 30px 80px rgba(0,0,0,.8);
+}
+
+/* PROVA */
 .quote{
   text-align:center;
   font-size:20px;
@@ -200,7 +221,7 @@ body{
   margin-bottom:10px;
 }
 
-/* ===== FAQ ===== */
+/* FAQ */
 details{
   background:#0d0d0d;
   border:1px solid #222;
@@ -215,11 +236,12 @@ summary{
   font-size:20px;
 }
 
-/* ===== MOBILE ===== */
+/* MOBILE */
 @media(max-width:900px){
   .hero{grid-template-columns:1fr}
   .hero h1{font-size:38px}
   .section h2{font-size:30px}
+  .preview-grid{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -236,7 +258,7 @@ summary{
   <div>
     <div class="tag">Método para perfis anônimos</div>
 
-    <h1>Ganhe Dinheiro<br><span>Usando o Algoritmo</span><br>a Seu Favor</h1>
+    <h1>Mais de<br><span>30+ videos gringos</span><br> para viralizar!</h1>
 
     <p>Você não precisa criar conteúdo, aparecer ou entender marketing.  
     Basta seguir o fluxo que já funciona.</p>
@@ -256,7 +278,7 @@ summary{
   </div>
 
   <div class="visual">
-    <img src="https://images.unsplash.com/photo-1559526324-593bc073d938" alt="Resultados">
+    <img src="https://i.pinimg.com/1200x/ad/64/6c/ad646c9aaddce9a8667ec74117664a4e.jpg" alt="Resultados">
   </div>
 </section>
 
@@ -267,7 +289,18 @@ summary{
     <div class="box"><h3>Banco Viral</h3><p>Conteúdos que já passaram no teste do algoritmo.</p></div>
     <div class="box"><h3>Roteiro Invisível</h3><p>Poste sem aparecer e sem criar nada do zero.</p></div>
     <div class="box"><h3>Funil Simples</h3><p>Do vídeo ao pagamento em poucos cliques.</p></div>
-    <div class="box"><h3>Escala</h3><p>Repita o processo em quantos perfis quiser.</p></div>
+  </div>
+</section>
+
+<!-- PREVIA DO CONTEÚDO -->
+<section class="section">
+  <h2>Prévia do Conteúdo</h2>
+  <p class="sub">Veja exatamente o tipo de material que você vai receber após a compra.</p>
+
+  <div class="preview-grid">
+    <img src="https://i.pinimg.com/1200x/4d/00/fd/4d00fd18b013b4891f72e415645588e2.jpg" alt="Prévia 1">
+    <img src="https://i.pinimg.com/1200x/0e/c6/5e/0ec65ec3837ce8f37da9f3679ea9bbba.jpg" alt="Prévia 2">
+    <img src="https://i.pinimg.com/736x/90/eb/1c/90eb1c2d2574bf8b1caa4e081fafbb19.jpg" alt="Prévia 3">
   </div>
 </section>
 
@@ -275,9 +308,9 @@ summary{
   <h2>O Que As Pessoas Dizem</h2>
 
   <div class="grid">
-    <div class="box quote"><div class="stars">★★★★★</div><p>“Postei, vendi e escalei.”</p></div>
-    <div class="box quote"><div class="stars">★★★★★</div><p>“Nunca vi algo tão simples.”</p></div>
-    <div class="box quote"><div class="stars">★★★★★</div><p>“Isso é roubado de tão barato.”</p></div>
+    <div class="box quote"><div class="stars">★★★★★ Rafael M. </div><p>“Entrei achando que era mais um curso genérico. Em 3 dias eu já tinha vídeo rodando e o perfil crescendo. O mais absurdo é que não precisei aparecer em nada.”</p></div>
+    <div class="box quote"><div class="stars">★★★★★ Camila S.</div><p>“Meu maior medo era gastar dinheiro e não conseguir aplicar. Aqui é impossível errar, porque o caminho já vem desenhado.”</p></div>
+    <div class="box quote"><div class="stars">★★★★★ Anderson N.</div><p>“Já comprei muita coisa na internet, mas isso aqui é diferente. Não tem enrolação, é direto ao ponto e funciona.”</p></div>
   </div>
 </section>
 
