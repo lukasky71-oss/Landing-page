@@ -1,316 +1,171 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-  <title>Acesso Restrito | Diagnóstico Rápido</title>
-  <meta name="description" content="Responda 3 perguntas rápidas e libere o acesso à condição especial." />
-  <meta name="robots" content="noindex,nofollow" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Acesso Restrito | Diagnóstico</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
 
-  <!-- META PIXEL (opcional aqui). Se você usar só na Kiwify, pode remover. -->
-  <script>
-    // Substitua SEU_PIXEL_ID_AQUI se quiser rastrear quiz/landing
-    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
-    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    // fbq('init','SEU_PIXEL_ID_AQUI'); // <- descomente e coloque seu Pixel
-    // fbq('track','PageView');
-  </script>
-
-  <style>
-    :root{
-      --bg:#07070a;
-      --panel:#0d0d12;
-      --text:#f4f4f6;
-      --muted:#a7a7b0;
-      --red:#ff2a2a;
-      --red2:#b80000;
-      --line:rgba(255,255,255,.08);
-      --shadow:0 25px 80px rgba(0,0,0,.75);
-      --r1:16px;
-      --r2:22px;
-    }
-    *{margin:0;padding:0;box-sizing:border-box;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
-    body{
-      background:
-        radial-gradient(900px 520px at 30% 0%, rgba(255,42,42,.22), transparent 55%),
-        radial-gradient(900px 520px at 80% 25%, rgba(184,0,0,.14), transparent 55%),
-        var(--bg);
-      color:var(--text);
-      min-height:100vh;
-      overflow-x:hidden;
-    }
-
-    .wrap{max-width:760px;margin:0 auto;padding:18px 16px 26px}
-    .card{
-      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
-      border:1px solid var(--line);
-      border-radius:var(--r2);
-      overflow:hidden;
-      box-shadow:var(--shadow);
-    }
-    .pad{padding:18px}
-    .top{
-      display:flex;align-items:center;justify-content:space-between;gap:10px;
-      margin-bottom:14px;
-    }
-    .badge{
-      display:inline-flex;align-items:center;gap:8px;
-      padding:7px 12px;border-radius:999px;
-      font-size:11px;font-weight:900;letter-spacing:.2px;
-      background:linear-gradient(135deg,var(--red),var(--red2));
-      box-shadow:0 16px 40px rgba(255,42,42,.12);
-      white-space:nowrap;
-    }
-    .miniHint{
-      color:var(--muted);
-      font-size:11px;
-      text-align:right;
-      line-height:1.4;
-    }
-
-    .progress{
-      height:9px;
-      background:rgba(0,0,0,.32);
-      border:1px solid var(--line);
-      border-radius:999px;
-      overflow:hidden;
-      margin:10px 0 16px;
-    }
-    .progress > div{
-      height:100%;
-      width:0%;
-      background:linear-gradient(135deg,var(--red),var(--red2));
-      transition:width .35s ease;
-    }
-
-    h1{
-      font-size:26px;
-      line-height:1.15;
-      letter-spacing:-.6px;
-      margin-bottom:10px;
-    }
-    .sub{
-      color:var(--muted);
-      font-size:14px;
-      line-height:1.65;
-      margin-bottom:14px;
-    }
-
-    .options{display:flex;flex-direction:column;gap:10px}
-    .opt{
-      border:1px solid var(--line);
-      background:rgba(0,0,0,.22);
-      padding:14px;
-      border-radius:var(--r1);
-      cursor:pointer;
-      transition:transform .12s ease, border-color .12s ease, background .12s ease;
-      user-select:none;
-      position:relative;
-      overflow:hidden;
-    }
-    .opt:hover{transform:translateY(-1px);border-color:rgba(255,42,42,.55)}
-    .opt.selected{
-      border-color:rgba(255,42,42,.85);
-      background:rgba(255,42,42,.10);
-      box-shadow:0 18px 60px rgba(255,42,42,.10);
-    }
-    .opt b{display:block;font-size:13px;margin-bottom:2px}
-    .opt span{display:block;color:var(--muted);font-size:12px;line-height:1.55}
-
-    .btn{
-      width:100%;
-      margin-top:14px;
-      padding:16px;
-      border-radius:16px;
-      border:0;
-      font-weight:900;
-      font-size:15px;
-      background:linear-gradient(135deg,var(--red),var(--red2));
-      color:#fff;
-      cursor:pointer;
-      transition:transform .12s ease, filter .12s ease;
-    }
-    .btn:hover{transform:translateY(-1px)}
-    .btn:active{transform:translateY(0px) scale(.99)}
-    .btn:disabled{opacity:.5;cursor:not-allowed;filter:saturate(.7)}
-
-    .timerBox{
-      margin-top:12px;
-      padding:12px 12px;
-      border-radius:16px;
-      background:rgba(255,42,42,.07);
-      border:1px dashed rgba(255,42,42,.35);
-      display:flex;justify-content:space-between;align-items:center;
-      gap:10px;
-      font-size:12px;
-      color:var(--muted);
-    }
-    .timerBox b{color:var(--text)}
-    .proof{
-      margin-top:12px;
-      color:var(--muted);
-      font-size:12px;
-      line-height:1.6;
-    }
-
-    .heroimg{
-      height:210px;
-      background:
-        linear-gradient(rgba(0,0,0,.35),rgba(0,0,0,.88)),
-        url('https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=1400&q=80') center/cover;
-    }
-
-    @media(min-width:720px){
-      .pad{padding:22px}
-      h1{font-size:30px}
-    }
-  </style>
+<style>
+:root{
+  --bg:#07070a;
+  --panel:#0d0d12;
+  --text:#f4f4f6;
+  --muted:#a7a7b0;
+  --red:#ff2a2a;
+  --red2:#b80000;
+  --line:rgba(255,255,255,.08);
+}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Inter,sans-serif}
+body{
+  background:radial-gradient(900px 500px at 30% 0%, rgba(255,42,42,.25), transparent 55%),var(--bg);
+  color:var(--text);
+  min-height:100vh;
+}
+.wrap{max-width:650px;margin:auto;padding:20px}
+.card{
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:22px;
+  overflow:hidden;
+  box-shadow:0 25px 70px rgba(0,0,0,.7);
+}
+.pad{padding:24px}
+.badge{
+  display:inline-block;
+  padding:6px 12px;
+  border-radius:999px;
+  font-size:11px;
+  font-weight:900;
+  background:linear-gradient(135deg,var(--red),var(--red2));
+  margin-bottom:14px;
+}
+h1{font-size:26px;margin-bottom:10px;line-height:1.2}
+.sub{color:var(--muted);font-size:14px;margin-bottom:20px;line-height:1.6}
+.block{
+  border:1px solid var(--line);
+  padding:16px;
+  border-radius:16px;
+  margin-bottom:12px;
+  cursor:pointer;
+  transition:.15s;
+}
+.block:hover{border-color:var(--red)}
+.block.selected{
+  border-color:var(--red);
+  background:rgba(255,42,42,.08);
+}
+button{
+  width:100%;
+  padding:16px;
+  border-radius:16px;
+  border:none;
+  font-weight:900;
+  font-size:15px;
+  background:linear-gradient(135deg,var(--red),var(--red2));
+  color:white;
+  cursor:pointer;
+  margin-top:10px;
+}
+button:disabled{opacity:.5;cursor:not-allowed}
+.heroimg{
+  height:200px;
+  background:linear-gradient(rgba(0,0,0,.4),rgba(0,0,0,.8)),
+  url('https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=1200&q=80') center/cover;
+}
+</style>
 </head>
 
 <body>
-  <div class="wrap">
-    <div class="card" role="region" aria-label="Diagnóstico rápido">
-      <div class="pad">
-        <div class="top">
-          <div class="badge" id="stepBadge">ETAPA 1 DE 3</div>
-          <div class="miniHint">
-            <div><b style="color:#fff">Tempo médio:</b> 20s</div>
-            <div>Responda e libere o acesso</div>
-          </div>
-        </div>
+<div class="wrap">
+  <div class="card">
+    <div class="pad">
 
-        <div class="progress" aria-hidden="true"><div id="bar"></div></div>
+      <div class="badge">ETAPA 1 DE 3</div>
 
-        <h1 id="title">Você quer evoluir de verdade?</h1>
-        <p class="sub" id="subtitle">Responda 3 perguntas rápidas e libere a condição especial.</p>
+      <h1 id="title">Você quer evoluir de verdade?</h1>
+      <p class="sub">Responda 3 perguntas rápidas para liberar seu acesso.</p>
 
-        <div class="options" id="options"></div>
+      <div id="options"></div>
+      <button id="continueBtn" disabled>Continuar</button>
 
-        <button class="btn" id="continueBtn" disabled>Continuar</button>
-
-        <div class="timerBox" aria-live="polite">
-          <span>Condição desta página expira em:</span>
-          <span><b id="timer">10:00</b></span>
-        </div>
-
-        <div class="proof">
-          🔴 Ambiente fechado • Acesso liberado apenas após conclusão do diagnóstico<br>
-          ⚠️ Se você sair agora, pode perder a condição desta turma.
-        </div>
-      </div>
-
-      <div class="heroimg" aria-hidden="true"></div>
     </div>
+    <div class="heroimg"></div>
   </div>
+</div>
 
-  <script>
-    // PIXEL (opcional)
-    try{ if(window.fbq){ fbq('track','ViewContent'); } }catch(e){}
+<script>
+const steps = [
+  {
+    title:"Você quer evoluir de verdade?",
+    options:[
+      "Sim, estou pronto para executar.",
+      "Estou cansado de começar e parar.",
+      "Quero mudar meu nível este mês."
+    ]
+  },
+  {
+    title:"Qual seu maior bloqueio hoje?",
+    options:[
+      "Falta de foco.",
+      "Falta de método.",
+      "Falta de ambiente."
+    ]
+  },
+  {
+    title:"Você está disposto a aplicar o que aprender?",
+    options:[
+      "Sim, 100%.",
+      "Se eu tiver direção clara.",
+      "Sim, preciso apenas de orientação."
+    ]
+  }
+];
 
-    const steps = [
-      {
-        title:"Você quer evoluir de verdade?",
-        subtitle:"Escolha a opção mais próxima do seu momento atual.",
-        options:[
-          {t:"Sim, estou pronto para executar.", d:"Quero um plano claro e aplicado."},
-          {t:"Estou cansado de começar e parar.", d:"Preciso destravar consistência."},
-          {t:"Quero mudar meu nível este mês.", d:"Chega de ficar no mesmo lugar."}
-        ]
-      },
-      {
-        title:"Qual seu maior bloqueio hoje?",
-        subtitle:"Isso define o caminho mais rápido pra você.",
-        options:[
-          {t:"Falta de foco.", d:"Distração e excesso de informação."},
-          {t:"Falta de método.", d:"Sem passo a passo, eu travo."},
-          {t:"Falta de ambiente.", d:"Sem comunidade, eu caio."}
-        ]
-      },
-      {
-        title:"Você está disposto a aplicar o que aprender?",
-        subtitle:"Execução decide. Conteúdo sozinho não muda nada.",
-        options:[
-          {t:"Sim, 100%.", d:"Quero resultado por mérito e ação."},
-          {t:"Se eu tiver direção clara.", d:"Eu só preciso do caminho certo."},
-          {t:"Sim, preciso apenas de orientação.", d:"Sem enrolação: aplicar e avançar."}
-        ]
-      }
-    ];
+let currentStep=0;
+let selected=false;
 
-    let currentStep = 0;
-    let selectedIndex = null;
+const title=document.getElementById("title");
+const optionsDiv=document.getElementById("options");
+const btn=document.getElementById("continueBtn");
 
-    const title = document.getElementById("title");
-    const subtitle = document.getElementById("subtitle");
-    const optionsDiv = document.getElementById("options");
-    const btn = document.getElementById("continueBtn");
-    const bar = document.getElementById("bar");
-    const stepBadge = document.getElementById("stepBadge");
+function renderStep(){
+  title.innerText=steps[currentStep].title;
+  optionsDiv.innerHTML="";
+  selected=false;
+  btn.disabled=true;
 
-    function renderStep(){
-      const total = steps.length;
-      stepBadge.textContent = `ETAPA ${Math.min(currentStep+1,total)} DE 3`;
+  steps[currentStep].options.forEach(text=>{
+    const div=document.createElement("div");
+    div.className="block";
+    div.innerText=text;
+    div.onclick=()=>{
+      document.querySelectorAll(".block").forEach(b=>b.classList.remove("selected"));
+      div.classList.add("selected");
+      selected=true;
+      btn.disabled=false;
+    };
+    optionsDiv.appendChild(div);
+  });
+}
 
-      title.textContent = steps[currentStep].title;
-      subtitle.textContent = steps[currentStep].subtitle;
+btn.onclick=()=>{
+  if(!selected) return;
 
-      selectedIndex = null;
-      btn.disabled = true;
-
-      optionsDiv.innerHTML = "";
-      steps[currentStep].options.forEach((o, idx) => {
-        const div = document.createElement("div");
-        div.className = "opt";
-        div.innerHTML = `<b>${o.t}</b><span>${o.d}</span>`;
-        div.addEventListener("click", () => {
-          document.querySelectorAll(".opt").forEach(x => x.classList.remove("selected"));
-          div.classList.add("selected");
-          selectedIndex = idx;
-          btn.disabled = false;
-        });
-        optionsDiv.appendChild(div);
-      });
-
-      bar.style.width = (currentStep / total) * 100 + "%";
-    }
-
-    btn.addEventListener("click", () => {
-      if(selectedIndex === null) return;
-
-      currentStep++;
-      if(currentStep < steps.length){
-        renderStep();
-      }else{
-        bar.style.width = "100%";
-        btn.disabled = true;
-        btn.textContent = "Analisando respostas...";
-        try{ if(window.fbq){ fbq('track','Lead'); } }catch(e){}
-        setTimeout(() => {
-          // Vai para a sua landing
-          window.location.href = "./index.html";
-        }, 900);
-      }
-    });
-
+  currentStep++;
+  if(currentStep<steps.length){
     renderStep();
+  }else{
+    btn.innerText="Analisando respostas...";
+    setTimeout(()=>{
+      window.location.href = "./inicio.html"; // REDIRECIONA PARA VENDA
+    },1000);
+  }
+};
 
-    // TIMER PSICOLÓGICO
-    let time = 600; // 10:00
-    const timer = document.getElementById("timer");
-    setInterval(() => {
-      if(time <= 0) return;
-      time--;
-      const min = Math.floor(time/60);
-      const sec = time % 60;
-      timer.textContent = `${min}:${sec<10 ? "0" : ""}${sec}`;
-    }, 1000);
-  </script>
+renderStep();
+</script>
+
 </body>
 </html>
