@@ -1,398 +1,541 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Algoritmo Milionário</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <title>Acesso Vitalício | Condição Especial</title>
+  <meta name="description" content="Acesso vitalício com trilha prática, templates e execução guiada. Oferta por tempo limitado." />
+  <meta name="robots" content="noindex,nofollow" />
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800;900&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
 
-<style>
-:root{
-  --primary:#f5c76b;
-  --primary-dark:#d4a93a;
-  --bg:#070707;
-  --panel:#111;
-  --text:#f4f4f4;
-  --muted:#c7c7c7;
-  --accent:#1aff7c;
-}
+  <!-- META PIXEL (opcional no site; purchase/upsell ficam pela Kiwify também) -->
+  <script>
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    // fbq('init','SEU_PIXEL_ID_AQUI'); // <- descomente e coloque seu Pixel
+    // fbq('track','PageView');
+  </script>
 
-*{margin:0;padding:0;box-sizing:border-box;font-family:Inter,Arial,sans-serif}
+  <style>
+    :root{
+      --bg:#07070a;
+      --panel:#0d0d12;
+      --panel2:#0a0a0e;
+      --text:#f4f4f6;
+      --muted:#a7a7b0;
+      --line:rgba(255,255,255,.08);
+      --red:#ff2a2a;
+      --red2:#b80000;
+      --green:#39ff88;
+      --shadow: 0 18px 70px rgba(0,0,0,.68);
+      --r1:16px;
+      --r2:22px;
+      --max: 920px;
+    }
 
-body{
-  background:
-    radial-gradient(circle at top,rgba(245,199,107,.08),transparent 40%),
-    #070707;
-  color:var(--text);
-  font-size:18px;
-  line-height:1.7;
-}
+    *{box-sizing:border-box;margin:0;padding:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+    html{scroll-behavior:smooth}
+    body{
+      color:var(--text);
+      background:
+        radial-gradient(1000px 500px at 30% 0%, rgba(255,42,42,.20), transparent 55%),
+        radial-gradient(1000px 500px at 80% 25%, rgba(184,0,0,.14), transparent 55%),
+        var(--bg);
+      min-height:100vh;
+      overflow-x:hidden;
+    }
+    a{color:inherit;text-decoration:none}
+    .wrap{max-width:var(--max);margin:0 auto;padding:0 16px}
+    .topbar{
+      position:sticky;top:0;z-index:50;
+      backdrop-filter: blur(14px);
+      background: rgba(7,7,10,.74);
+      border-bottom:1px solid var(--line);
+    }
+    .topbar .inner{
+      display:flex;align-items:center;justify-content:space-between;
+      padding:12px 0;gap:10px;
+    }
+    .brand{
+      display:flex;align-items:center;gap:10px;
+      font-weight:900;letter-spacing:.2px;
+      font-size:14px;
+    }
+    .pill{
+      font-size:11px;
+      color:#fff;
+      background: linear-gradient(135deg, var(--red), var(--red2));
+      padding:6px 10px;border-radius:999px;
+      box-shadow:0 14px 40px rgba(255,42,42,.16);
+      font-weight:900;
+      white-space:nowrap;
+    }
 
-/* HEADER */
-.header{
-  padding:18px;
-  text-align:center;
-  background:#000;
-  font-weight:800;
-  font-size:15px;
-  color:var(--primary);
-}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;
+      gap:10px;
+      padding:13px 14px;border-radius:14px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.04);
+      color:var(--text);
+      font-weight:900;
+      cursor:pointer;
+      transition: transform .12s ease, background .12s ease, border-color .12s ease, filter .12s ease;
+      user-select:none;
+      width:100%;
+    }
+    .btn:hover{transform: translateY(-1px); background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.14)}
+    .btn:active{transform: translateY(0px) scale(.99)}
+    .btn-primary{
+      border:0;
+      background: linear-gradient(135deg, var(--red), var(--red2));
+      box-shadow: 0 18px 60px rgba(255,42,42,.16);
+    }
 
-/* CONTAINER */
-.container{
-  max-width:1200px;
-  margin:auto;
-  padding:80px 22px;
-}
+    .hero{padding:18px 0 14px}
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border:1px solid var(--line);
+      border-radius: var(--r2);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .pad{padding:16px}
+    .kicker{
+      display:flex;align-items:center;gap:10px;
+      color:var(--muted);
+      font-weight:800;
+      font-size:12px;
+      margin-bottom:10px;
+    }
+    .dot{
+      width:9px;height:9px;border-radius:999px;
+      background: var(--red);
+      box-shadow:0 0 0 6px rgba(255,42,42,.10);
+      flex:0 0 9px;
+    }
 
-/* HERO */
-.hero{
-  display:grid;
-  grid-template-columns:1.1fr .9fr;
-  gap:60px;
-  align-items:center;
-}
+    h1{
+      font-size:28px;
+      line-height:1.08;
+      letter-spacing:-.8px;
+      margin-bottom:10px;
+    }
+    .sub{
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.65;
+      margin-bottom:14px;
+    }
 
-.tag{
-  display:inline-block;
-  background:rgba(245,199,107,.12);
-  border:1px solid rgba(245,199,107,.4);
-  color:var(--primary);
-  padding:8px 16px;
-  border-radius:999px;
-  font-size:14px;
-  font-weight:700;
-  margin-bottom:20px;
-}
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:12px;
+      margin-top:12px;
+    }
+    .mini{
+      display:flex;gap:10px;align-items:flex-start;
+      padding:12px;
+      border:1px solid var(--line);
+      border-radius: var(--r1);
+      background: rgba(0,0,0,.20);
+    }
+    .mini b{font-size:13px}
+    .mini span{display:block;color:var(--muted);font-size:12px;line-height:1.5;margin-top:2px}
 
-.hero h1{
-  font-size:56px;
-  font-weight:900;
-  line-height:1.05;
-}
+    .tick{
+      width:18px;height:18px;border-radius:6px;
+      border:1px solid rgba(255,42,42,.25);
+      background: rgba(255,42,42,.10);
+      display:flex;align-items:center;justify-content:center;
+      flex:0 0 18px;margin-top:1px;
+    }
+    .tick svg{width:12px;height:12px;fill:var(--red)}
 
-.hero h1 span{color:var(--primary)}
+    .section{padding:14px 0}
+    h2{font-size:18px;letter-spacing:-.2px;margin-bottom:10px}
 
-.hero p{
-  margin-top:20px;
-  font-size:22px;
-  color:var(--muted);
-}
+    .priceBox{
+      border:1px solid rgba(255,42,42,.22);
+      background: rgba(255,42,42,.06);
+      border-radius: var(--r2);
+      padding:14px;
+    }
+    .priceTop{
+      display:flex;align-items:flex-end;justify-content:space-between;gap:10px;flex-wrap:wrap;
+    }
+    .strike{
+      color: rgba(255,255,255,.35);
+      text-decoration: line-through;
+      font-size:12px;font-weight:900;
+    }
+    .price{
+      font-size:36px;font-weight:900;letter-spacing:-.9px;
+    }
+    .per{
+      color:var(--muted);
+      font-size:12px;
+      margin-top:2px;
+      line-height:1.45;
+    }
 
-.hero ul{
-  margin-top:28px;
-  list-style:none;
-}
+    .list{display:flex;flex-direction:column;gap:8px;margin:12px 0 12px;color:var(--muted);font-size:13px;line-height:1.55}
+    .li{display:flex;gap:10px;align-items:flex-start}
+    .li b{color:var(--text)}
 
-.hero li{
-  font-size:18px;
-  margin-bottom:10px;
-}
+    .countdown{
+      display:flex;align-items:center;justify-content:space-between;gap:10px;
+      margin-top:10px;
+      padding:12px 12px;border-radius:16px;
+      border:1px dashed rgba(255,42,42,.35);
+      background: rgba(255,42,42,.07);
+    }
+    .countdown .txt{font-size:12px;color:var(--muted);line-height:1.35}
+    .countdown .timer{font-weight:900;letter-spacing:.8px;font-size:13px;white-space:nowrap}
 
-.hero li::before{
-  content:"→ ";
-  color:var(--primary);
-  font-weight:900;
-}
+    .socialProof{
+      display:grid;grid-template-columns:1fr;gap:10px;margin-top:12px
+    }
+    .quote{
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.03);
+      border-radius:var(--r1);
+      padding:12px;
+    }
+    .quote .name{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:6px}
+    .stars{color:#ffd36a;font-weight:900;letter-spacing:.3px;font-size:12px}
+    .quote p{color:var(--muted);font-size:12px;line-height:1.65}
 
-/* OFFER */
-.offer{
-  margin-top:40px;
-  background:linear-gradient(180deg,rgba(245,199,107,.18),rgba(0,0,0,.9));
-  border:2px solid rgba(245,199,107,.45);
-  border-radius:26px;
-  padding:40px;
-  max-width:480px;
-}
+    .faq{display:flex;flex-direction:column;gap:10px}
+    details{
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      border-radius: var(--r1);
+      padding:12px 12px;
+    }
+    summary{
+      cursor:pointer;font-weight:900;list-style:none;
+      display:flex;align-items:center;justify-content:space-between;gap:10px;
+      font-size:13px;
+    }
+    summary::-webkit-details-marker{display:none}
+    details p{margin-top:10px;color:var(--muted);font-size:12px;line-height:1.65}
 
-.old{
-  text-decoration:line-through;
-  color:#999;
-  font-size:18px;
-}
+    .note{
+      margin-top:10px;
+      padding:12px;border-radius:16px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.22);
+      color:var(--muted);
+      font-size:12px;
+      line-height:1.65;
+    }
 
-.price{
-  font-size:70px;
-  font-weight:900;
-  color:var(--primary);
-  margin:10px 0;
-}
+    .foot{
+      padding:18px 0 92px;
+      color:var(--muted);
+      font-size:11px;
+      line-height:1.65;
+      border-top:1px solid var(--line);
+      margin-top:8px;
+    }
 
-.cta{
-  display:block;
-  margin-top:22px;
-  background:linear-gradient(180deg,var(--primary),var(--primary-dark));
-  color:#000;
-  padding:26px;
-  font-size:22px;
-  font-weight:900;
-  border-radius:18px;
-  text-align:center;
-  text-decoration:none;
-  text-transform:uppercase;
-}
+    .sticky{
+      position:fixed;left:0;right:0;bottom:0;
+      z-index:60;
+      background: rgba(7,7,10,.82);
+      backdrop-filter: blur(14px);
+      border-top:1px solid var(--line);
+    }
+    .sticky .inner{
+      max-width:var(--max);margin:0 auto;padding:10px 16px;
+      display:flex;align-items:center;justify-content:space-between;gap:12px;
+    }
+    .sticky .left{display:flex;flex-direction:column;gap:1px}
+    .sticky .left b{font-size:12px}
+    .sticky .left span{font-size:11px;color:var(--muted)}
+    .sticky .right a{min-width:160px}
 
-.note{
-  margin-top:12px;
-  font-size:14px;
-  color:#aaa;
-  text-align:center;
-}
-
-/* UPSELL */
-.upsell{
-  margin-top:28px;
-  background:linear-gradient(180deg,rgba(26,255,124,.12),rgba(0,0,0,.95));
-  border:2px solid rgba(26,255,124,.45);
-  border-radius:20px;
-  padding:26px;
-}
-
-.upsell h3{
-  text-align:center;
-  color:var(--accent);
-  font-size:24px;
-  font-weight:900;
-  margin-bottom:10px;
-}
-
-.upsell p{
-  text-align:center;
-  color:var(--muted);
-  margin-bottom:14px;
-}
-
-.upsell ul{
-  list-style:none;
-  margin-bottom:16px;
-}
-
-.upsell li{
-  font-size:17px;
-  margin-bottom:6px;
-}
-
-.upsell li::before{
-  content:"➕ ";
-  color:var(--accent);
-  font-weight:900;
-}
-
-.upsell-price{
-  text-align:center;
-  font-size:42px;
-  font-weight:900;
-  color:var(--accent);
-  margin-bottom:14px;
-}
-
-.upsell-btn{
-  display:block;
-  text-align:center;
-  background:linear-gradient(180deg,var(--accent),#10d86a);
-  color:#000;
-  padding:20px;
-  font-size:20px;
-  font-weight:900;
-  border-radius:16px;
-  text-decoration:none;
-}
-
-/* VISUAL */
-.visual{
-  background:#0d0d0d;
-  border-radius:28px;
-  padding:30px;
-  box-shadow:0 40px 120px rgba(0,0,0,.8);
-}
-
-.visual img{
-  width:100%;
-  border-radius:18px;
-}
-
-/* SECTIONS */
-.section{
-  margin-top:120px;
-}
-
-.section h2{
-  text-align:center;
-  font-size:42px;
-  margin-bottom:18px;
-}
-
-.section p.sub{
-  text-align:center;
-  color:var(--muted);
-  max-width:700px;
-  margin:0 auto 60px;
-}
-
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-  gap:28px;
-}
-
-.box{
-  background:var(--panel);
-  border:1px solid #1f1f1f;
-  border-radius:20px;
-  padding:30px;
-}
-
-.box h3{
-  color:var(--primary);
-  font-size:22px;
-  margin-bottom:12px;
-}
-
-.box p{
-  font-size:18px;
-  color:var(--muted);
-}
-
-/* PREVIEW */
-.preview-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:26px;
-}
-
-.preview-grid img{
-  width:100%;
-  border-radius:20px;
-  border:1px solid rgba(245,199,107,.25);
-  box-shadow:0 30px 80px rgba(0,0,0,.8);
-}
-
-/* TESTIMONIALS */
-.quote{text-align:center;font-size:20px}
-.stars{color:var(--primary);font-size:22px;margin-bottom:10px}
-
-/* FAQ */
-details{
-  background:#0d0d0d;
-  border:1px solid #222;
-  border-radius:16px;
-  padding:22px;
-  margin-bottom:14px;
-}
-
-summary{
-  cursor:pointer;
-  font-weight:700;
-  font-size:20px;
-}
-
-/* MOBILE */
-@media(max-width:900px){
-  .hero{grid-template-columns:1fr}
-  .hero h1{font-size:38px}
-  .section h2{font-size:30px}
-  .preview-grid{grid-template-columns:1fr}
-}
-</style>
+    @media(min-width:720px){
+      h1{font-size:36px}
+      .wrap{padding:0 18px}
+      .btn{width:auto}
+      .grid{grid-template-columns: 1fr 1fr}
+      .socialProof{grid-template-columns:1fr 1fr}
+      .sticky .right a{min-width:240px}
+    }
+  </style>
 </head>
 
 <body>
+  <header class="topbar">
+    <div class="wrap">
+      <div class="inner">
+        <div class="brand">
+          <span class="pill">ACESSO VITALÍCIO</span>
+          <span>Condição Especial</span>
+        </div>
+        <a class="btn btn-primary" href="#assinar">Liberar acesso</a>
+      </div>
+    </div>
+  </header>
 
-<div class="header">⚡ ACESSO IMEDIATO • OFERTA LIMITADA</div>
+  <main>
+    <section class="hero">
+      <div class="wrap">
+        <div class="card">
+          <div class="pad">
+            <div class="kicker">
+              <span class="dot"></span>
+              <span>Trilha prática • Templates • Execução guiada</span>
+            </div>
 
-<div class="container">
+            <h1>
+              Você não precisa de mais informação.
+              <span style="color:var(--red)">Você precisa de direção</span> — e um plano simples pra executar.
+            </h1>
 
-<!-- HERO -->
-<section class="hero">
-  <div>
-    <div class="tag">Método para perfis anônimos</div>
+            <p class="sub">
+              Acesso vitalício com o essencial pra você parar de travar, sair do ciclo “começa e para” e entrar em execução com clareza.
+              Sem promessa milagrosa — só estrutura.
+            </p>
 
-    <h1>Mais de<br><span>30k + vídeos gringos</span><br>para viralizar!</h1>
+            <div class="grid">
+              <div class="mini">
+                <div class="tick" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="M9.0 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg>
+                </div>
+                <div>
+                  <b>Trilha de execução</b>
+                  <span>Passo a passo curto: fazer hoje, não “um dia”.</span>
+                </div>
+              </div>
 
-    <p>Você não precisa criar conteúdo, aparecer ou entender marketing.<br>
-    Basta seguir o fluxo que já funciona.</p>
+              <div class="mini">
+                <div class="tick" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="M9.0 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg>
+                </div>
+                <div>
+                  <b>Templates prontos</b>
+                  <span>Copiar, adaptar e aplicar. Sem travar na forma.</span>
+                </div>
+              </div>
 
-    <ul>
-      <li>Vídeos já validados</li>
-      <li>Estrutura pronta de postagem</li>
-      <li>Modelo de monetização testado</li>
-    </ul>
+              <div class="mini">
+                <div class="tick" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="M9.0 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg>
+                </div>
+                <div>
+                  <b>Acesso vitalício</b>
+                  <span>Compra única. Sem mensalidade. Sem enrolação.</span>
+                </div>
+              </div>
 
-    <div class="offer">
-      <div class="old">De R$197,00</div>
-      <div class="price">R$9,90</div>
+              <div class="mini">
+                <div class="tick" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="M9.0 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg>
+                </div>
+                <div>
+                  <b>Entrega imediata</b>
+                  <span>Após confirmação do pagamento, acesso liberado.</span>
+                </div>
+              </div>
+            </div>
 
-      <a href="https://ambienteseguro.org.ua/c/05bc1aa1b7" class="cta">
-        Acessar agora
-      </a>
+            <!-- OFERTA -->
+            <div class="section" id="assinar">
+              <div class="priceBox">
+                <div class="priceTop">
+                  <div>
+                    <div class="strike">de R$ 197</div>
+                    <div class="price">R$ 27</div>
+                    <div class="per">
+                      compra única • acesso vitalício • condição da turma<br>
+                      <span style="color:var(--green);font-weight:900">Upsells 1-click aparecem após a compra (Kiwify)</span>
+                    </div>
+                  </div>
+                </div>
 
-      <div class="note">Pagamento único • Acesso vitalício</div>
+                <div class="list" style="margin-top:12px">
+                  <div class="li">
+                    <div class="tick" aria-hidden="true">
+                      <svg viewBox="0 0 24 24"><path d="M9.0 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg>
+                    </div>
+                    <div><b>Conteúdo direto</b> (sem “encher linguiça”)</div>
+                  </div>
+                  <div class="li">
+                    <div class="tick" aria-hidden="true">
+                      <svg viewBox="0 0 24 24"><path d="M9.0 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg>
+                    </div>
+                    <div><b>Templates</b> para acelerar aplicação</div>
+                  </div>
+                  <div class="li">
+                    <div class="tick" aria-hidden="true">
+                      <svg viewBox="0 0 24 24"><path d="M9.0 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg>
+                    </div>
+                    <div><b>Garantia legal</b> (você define na Kiwify)</div>
+                  </div>
+                </div>
 
-      <div class="upsell">
-        <h3>Upgrade Estratégico</h3>
-        <p>Escala mais rápida com o pacote completo</p>
-        <ul>
-          <li>Copys de alta conversão</li>
-          <li>Bancos organizados por nichos</li>
-          <li>Prompts prontos para rodar em IA</li>
-          <li>IA totalmente gratuita</li>
-        </ul>
-      <div class="old">De R$197,90</div>
-        <div class="upsell-price">R$19,90</div>
+                <!-- ✅ COLE AQUI O LINK DO CHECKOUT DA KIWIFY -->
+                <a class="btn btn-primary" id="checkoutBtn"
+                   href="COLE_AQUI_SEU_LINK_DA_KIWIFY"
+                   target="_blank" rel="noopener">
+                  Liberar acesso vitalício agora
+                </a>
 
-        <a href="https://ambienteseguro.org.ua/c/dde6893c06" class="upsell-btn">
-          Adicionar upgrade
+                <div class="countdown" aria-live="polite">
+                  <div class="txt">
+                    <b style="color:var(--text)">Condição especial</b><br>
+                    expira automaticamente.
+                  </div>
+                  <div class="timer" id="timer">00:00:00</div>
+                </div>
+
+                <div class="note">
+                  <b style="color:var(--text)">Importante:</b> nada aqui é promessa de resultado.
+                  Resultado depende da sua execução e variáveis externas.
+                </div>
+              </div>
+            </div>
+
+            <!-- PROVAS (genéricas – você pode trocar nomes/prints depois) -->
+            <div class="section">
+              <h2>O que muda quando você para de travar</h2>
+              <div class="socialProof">
+                <div class="quote">
+                  <div class="name">
+                    <b>“Direto ao ponto.”</b>
+                    <span class="stars">★★★★★</span>
+                  </div>
+                  <p>“Eu vivia começando e parando. Com a trilha e os templates, parei de perder tempo e comecei a executar.”</p>
+                </div>
+                <div class="quote">
+                  <div class="name">
+                    <b>“Sem enrolação.”</b>
+                    <span class="stars">★★★★★</span>
+                  </div>
+                  <p>“O que eu precisava era de direção. Não era falta de esforço. Era falta de método.”</p>
+                </div>
+                <div class="quote">
+                  <div class="name">
+                    <b>“Objetivo e prático.”</b>
+                    <span class="stars">★★★★★</span>
+                  </div>
+                  <p>“Consegui organizar o que fazer primeiro e o que parar de fazer. Isso muda o jogo.”</p>
+                </div>
+                <div class="quote">
+                  <div class="name">
+                    <b>“Valeu o acesso.”</b>
+                    <span class="stars">★★★★★</span>
+                  </div>
+                  <p>“Acesso vitalício por 27 é absurdo. Peguei e já apliquei no mesmo dia.”</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- FAQ -->
+        <div class="section">
+          <div class="card">
+            <div class="pad">
+              <h2>FAQ (rápido)</h2>
+              <div class="faq">
+                <details>
+                  <summary>Como recebo o acesso?</summary>
+                  <p>Após o pagamento na Kiwify, você recebe as instruções de acesso/entrega conforme você configurar no produto (arquivo, área de membros, grupo, etc.).</p>
+                </details>
+                <details>
+                  <summary>Por que tem upsell depois?</summary>
+                  <p>Porque alguns complementos aceleram resultado (ex.: templates avançados / plano de 30 dias). Eles aparecem após a compra, em 1 clique, sem atrapalhar o acesso principal.</p>
+                </details>
+                <details>
+                  <summary>Isso garante resultado?</summary>
+                  <p>Não. É direção e estrutura. Resultado depende de execução e variáveis externas.</p>
+                </details>
+                <details>
+                  <summary>Posso pedir reembolso?</summary>
+                  <p>Você define e exibe a garantia dentro da Kiwify, de forma transparente.</p>
+                </details>
+              </div>
+
+              <div class="note">
+                <b style="color:var(--text)">Dica:</b> coloque prints reais depois (depoimentos, resultados, bastidores). Isso aumenta MUITO conversão.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <footer class="foot">
+          <div class="wrap">
+            <div style="font-weight:900;color:var(--text)">Acesso Vitalício</div>
+            <div style="margin-top:6px">Trilha prática • Templates • Execução guiada</div>
+            <div style="margin-top:10px">© <span id="year"></span> • Todos os direitos reservados.</div>
+          </div>
+        </footer>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Sticky CTA -->
+  <div class="sticky" role="region" aria-label="Barra fixa de compra">
+    <div class="inner">
+      <div class="left">
+        <b>Liberar acesso vitalício</b>
+        <span>R$ 27 • condição especial</span>
+      </div>
+      <div class="right">
+        <a class="btn btn-primary" id="stickyBtn"
+           href="COLE_AQUI_SEU_LINK_DA_KIWIFY"
+           target="_blank" rel="noopener">
+          Comprar agora
         </a>
       </div>
     </div>
   </div>
 
-  <div class="visual">
-    <img src="https://i.pinimg.com/1200x/ad/64/6c/ad646c9aaddce9a8667ec74117664a4e.jpg">
-  </div>
-</section>
+  <script>
+    // PIXEL (opcional)
+    try{ if(window.fbq){ fbq('track','ViewContent'); } }catch(e){}
 
-<!-- O QUE VAI DESBLOQUEAR -->
-<section class="section">
-  <h2>O Que Você Vai Desbloquear</h2>
-  <div class="grid">
-    <div class="box"><h3>Banco Viral</h3><p>Conteúdos que já passaram no teste do algoritmo.</p></div>
-    <div class="box"><h3>Roteiro Invisível</h3><p>Poste sem aparecer e sem criar nada do zero.</p></div>
-    <div class="box"><h3>Funil Simples</h3><p>Do vídeo ao pagamento em poucos cliques.</p></div>
-  </div>
-</section>
+    // ano
+    document.getElementById('year').textContent = new Date().getFullYear();
 
-<!-- PRÉVIA -->
-<section class="section">
-  <h2>Prévia do Conteúdo</h2>
-  <p class="sub">Veja exatamente o que você vai receber após a compra.</p>
-  <div class="preview-grid">
-    <img src="https://i.pinimg.com/1200x/4d/00/fd/4d00fd18b013b4891f72e415645588e2.jpg">
-    <img src="https://i.pinimg.com/1200x/0e/c6/5e/0ec65ec3837ce8f37da9f3679ea9bbba.jpg">
-    <img src="https://i.pinimg.com/736x/90/eb/1c/90eb1c2d2574bf8b1caa4e081fafbb19.jpg">
-  </div>
-</section>
+    // ✅ Dispara InitiateCheckout ao clicar nos botões (melhor pro Meta)
+    function bindCheckout(id){
+      const el = document.getElementById(id);
+      if(!el) return;
+      el.addEventListener('click', () => {
+        try{ if(window.fbq){ fbq('track','InitiateCheckout'); } }catch(e){}
+      });
+    }
+    bindCheckout('checkoutBtn');
+    bindCheckout('stickyBtn');
 
-<!-- PROVA SOCIAL -->
-<section class="section">
-  <h2>O Que As Pessoas Dizem</h2>
-  <div class="grid">
-    <div class="box quote"><div class="stars">★★★★★ Rafael M.</div><p>"É literalmente pegar algo que já funciona e replicar."</p></div>
-    <div class="box quote"><div class="stars">★★★★★ Camila S.</div><p>"Acelera meses de tentativa e erro."</p></div>
-    <div class="box quote"><div class="stars">★★★★★ Anderson N.</div><p>"Se custasse 197 eu ainda compraria."</p></div>
-  </div>
-</section>
-
-<!-- FAQ -->
-<section class="section">
-  <h2>Dúvidas Rápidas</h2>
-  <details><summary>Preciso ter experiência?</summary><p>Não. É para iniciantes.</p></details>
-  <details><summary>Funciona para qualquer nicho?</summary><p>Sim.</p></details>
-  <details><summary>Tem garantia?</summary><p>7 dias.</p></details>
-</section>
-
-</div>
+    // Countdown (12h)
+    const end = Date.now() + 12*60*60*1000;
+    const timerEl = document.getElementById('timer');
+    function pad(n){ return String(n).padStart(2,'0'); }
+    function tick(){
+      const t = Math.max(0, end - Date.now());
+      const h = Math.floor(t / (1000*60*60));
+      const m = Math.floor((t % (1000*60*60)) / (1000*60));
+      const s = Math.floor((t % (1000*60)) / 1000);
+      timerEl.textContent = `${pad(h)}:${pad(m)}:${pad(s)}`;
+      if(t <= 0) timerEl.textContent = "ENCERRADO";
+    }
+    setInterval(tick, 1000);
+    tick();
+  </script>
 </body>
 </html>
-
