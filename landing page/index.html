@@ -159,7 +159,8 @@ btn.onclick=()=>{
   }else{
     btn.innerText="Analisando respostas...";
     setTimeout(()=>{
-      window.location.href = "./inicio.html"; // REDIRECIONA PARA VENDA
+      // 🔥 REDIRECIONAMENTO CORRIGIDO PARA PASTA COM ACENTO
+      window.location.href = "/P%C3%A1gina%20inicial/inicio.html";
     },1000);
   }
 };
