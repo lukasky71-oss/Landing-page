@@ -2,17 +2,18 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-  <title>Acesso Vitalício | Condição Especial</title>
-  <meta name="description" content="Acesso vitalício com trilha prática, templates e execução guiada. Oferta por tempo limitado." />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Acesso Restrito | Diagnóstico Rápido</title>
+  <meta name="description" content="Responda 3 perguntas rápidas e libere o acesso à condição especial." />
   <meta name="robots" content="noindex,nofollow" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
 
-  <!-- META PIXEL (opcional no site; purchase/upsell ficam pela Kiwify também) -->
+  <!-- META PIXEL (opcional aqui). Se você usar só na Kiwify, pode remover. -->
   <script>
+    // Substitua SEU_PIXEL_ID_AQUI se quiser rastrear quiz/landing
     !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
     n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
     n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
@@ -26,105 +27,73 @@
     :root{
       --bg:#07070a;
       --panel:#0d0d12;
-      --panel2:#0a0a0e;
       --text:#f4f4f6;
       --muted:#a7a7b0;
-      --line:rgba(255,255,255,.08);
       --red:#ff2a2a;
       --red2:#b80000;
-      --green:#39ff88;
-      --shadow: 0 18px 70px rgba(0,0,0,.68);
+      --line:rgba(255,255,255,.08);
+      --shadow:0 25px 80px rgba(0,0,0,.75);
       --r1:16px;
       --r2:22px;
-      --max: 920px;
     }
-
-    *{box-sizing:border-box;margin:0;padding:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
-    html{scroll-behavior:smooth}
+    *{margin:0;padding:0;box-sizing:border-box;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
     body{
-      color:var(--text);
       background:
-        radial-gradient(1000px 500px at 30% 0%, rgba(255,42,42,.20), transparent 55%),
-        radial-gradient(1000px 500px at 80% 25%, rgba(184,0,0,.14), transparent 55%),
+        radial-gradient(900px 520px at 30% 0%, rgba(255,42,42,.22), transparent 55%),
+        radial-gradient(900px 520px at 80% 25%, rgba(184,0,0,.14), transparent 55%),
         var(--bg);
+      color:var(--text);
       min-height:100vh;
       overflow-x:hidden;
     }
-    a{color:inherit;text-decoration:none}
-    .wrap{max-width:var(--max);margin:0 auto;padding:0 16px}
-    .topbar{
-      position:sticky;top:0;z-index:50;
-      backdrop-filter: blur(14px);
-      background: rgba(7,7,10,.74);
-      border-bottom:1px solid var(--line);
+
+    .wrap{max-width:760px;margin:0 auto;padding:18px 16px 26px}
+    .card{
+      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border:1px solid var(--line);
+      border-radius:var(--r2);
+      overflow:hidden;
+      box-shadow:var(--shadow);
     }
-    .topbar .inner{
-      display:flex;align-items:center;justify-content:space-between;
-      padding:12px 0;gap:10px;
+    .pad{padding:18px}
+    .top{
+      display:flex;align-items:center;justify-content:space-between;gap:10px;
+      margin-bottom:14px;
     }
-    .brand{
-      display:flex;align-items:center;gap:10px;
-      font-weight:900;letter-spacing:.2px;
-      font-size:14px;
-    }
-    .pill{
-      font-size:11px;
-      color:#fff;
-      background: linear-gradient(135deg, var(--red), var(--red2));
-      padding:6px 10px;border-radius:999px;
-      box-shadow:0 14px 40px rgba(255,42,42,.16);
-      font-weight:900;
+    .badge{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:7px 12px;border-radius:999px;
+      font-size:11px;font-weight:900;letter-spacing:.2px;
+      background:linear-gradient(135deg,var(--red),var(--red2));
+      box-shadow:0 16px 40px rgba(255,42,42,.12);
       white-space:nowrap;
     }
-
-    .btn{
-      display:inline-flex;align-items:center;justify-content:center;
-      gap:10px;
-      padding:13px 14px;border-radius:14px;
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.04);
-      color:var(--text);
-      font-weight:900;
-      cursor:pointer;
-      transition: transform .12s ease, background .12s ease, border-color .12s ease, filter .12s ease;
-      user-select:none;
-      width:100%;
-    }
-    .btn:hover{transform: translateY(-1px); background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.14)}
-    .btn:active{transform: translateY(0px) scale(.99)}
-    .btn-primary{
-      border:0;
-      background: linear-gradient(135deg, var(--red), var(--red2));
-      box-shadow: 0 18px 60px rgba(255,42,42,.16);
-    }
-
-    .hero{padding:18px 0 14px}
-    .card{
-      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
-      border:1px solid var(--line);
-      border-radius: var(--r2);
-      box-shadow: var(--shadow);
-      overflow:hidden;
-    }
-    .pad{padding:16px}
-    .kicker{
-      display:flex;align-items:center;gap:10px;
+    .miniHint{
       color:var(--muted);
-      font-weight:800;
-      font-size:12px;
-      margin-bottom:10px;
+      font-size:11px;
+      text-align:right;
+      line-height:1.4;
     }
-    .dot{
-      width:9px;height:9px;border-radius:999px;
-      background: var(--red);
-      box-shadow:0 0 0 6px rgba(255,42,42,.10);
-      flex:0 0 9px;
+
+    .progress{
+      height:9px;
+      background:rgba(0,0,0,.32);
+      border:1px solid var(--line);
+      border-radius:999px;
+      overflow:hidden;
+      margin:10px 0 16px;
+    }
+    .progress > div{
+      height:100%;
+      width:0%;
+      background:linear-gradient(135deg,var(--red),var(--red2));
+      transition:width .35s ease;
     }
 
     h1{
-      font-size:28px;
-      line-height:1.08;
-      letter-spacing:-.8px;
+      font-size:26px;
+      line-height:1.15;
+      letter-spacing:-.6px;
       margin-bottom:10px;
     }
     .sub{
@@ -134,373 +103,110 @@
       margin-bottom:14px;
     }
 
-    .grid{
-      display:grid;
-      grid-template-columns: 1fr;
-      gap:12px;
-      margin-top:12px;
-    }
-    .mini{
-      display:flex;gap:10px;align-items:flex-start;
-      padding:12px;
+    .options{display:flex;flex-direction:column;gap:10px}
+    .opt{
       border:1px solid var(--line);
-      border-radius: var(--r1);
-      background: rgba(0,0,0,.20);
-    }
-    .mini b{font-size:13px}
-    .mini span{display:block;color:var(--muted);font-size:12px;line-height:1.5;margin-top:2px}
-
-    .tick{
-      width:18px;height:18px;border-radius:6px;
-      border:1px solid rgba(255,42,42,.25);
-      background: rgba(255,42,42,.10);
-      display:flex;align-items:center;justify-content:center;
-      flex:0 0 18px;margin-top:1px;
-    }
-    .tick svg{width:12px;height:12px;fill:var(--red)}
-
-    .section{padding:14px 0}
-    h2{font-size:18px;letter-spacing:-.2px;margin-bottom:10px}
-
-    .priceBox{
-      border:1px solid rgba(255,42,42,.22);
-      background: rgba(255,42,42,.06);
-      border-radius: var(--r2);
+      background:rgba(0,0,0,.22);
       padding:14px;
-    }
-    .priceTop{
-      display:flex;align-items:flex-end;justify-content:space-between;gap:10px;flex-wrap:wrap;
-    }
-    .strike{
-      color: rgba(255,255,255,.35);
-      text-decoration: line-through;
-      font-size:12px;font-weight:900;
-    }
-    .price{
-      font-size:36px;font-weight:900;letter-spacing:-.9px;
-    }
-    .per{
-      color:var(--muted);
-      font-size:12px;
-      margin-top:2px;
-      line-height:1.45;
-    }
-
-    .list{display:flex;flex-direction:column;gap:8px;margin:12px 0 12px;color:var(--muted);font-size:13px;line-height:1.55}
-    .li{display:flex;gap:10px;align-items:flex-start}
-    .li b{color:var(--text)}
-
-    .countdown{
-      display:flex;align-items:center;justify-content:space-between;gap:10px;
-      margin-top:10px;
-      padding:12px 12px;border-radius:16px;
-      border:1px dashed rgba(255,42,42,.35);
-      background: rgba(255,42,42,.07);
-    }
-    .countdown .txt{font-size:12px;color:var(--muted);line-height:1.35}
-    .countdown .timer{font-weight:900;letter-spacing:.8px;font-size:13px;white-space:nowrap}
-
-    .socialProof{
-      display:grid;grid-template-columns:1fr;gap:10px;margin-top:12px
-    }
-    .quote{
-      border:1px solid var(--line);
-      background:rgba(255,255,255,.03);
       border-radius:var(--r1);
-      padding:12px;
+      cursor:pointer;
+      transition:transform .12s ease, border-color .12s ease, background .12s ease;
+      user-select:none;
+      position:relative;
+      overflow:hidden;
     }
-    .quote .name{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:6px}
-    .stars{color:#ffd36a;font-weight:900;letter-spacing:.3px;font-size:12px}
-    .quote p{color:var(--muted);font-size:12px;line-height:1.65}
+    .opt:hover{transform:translateY(-1px);border-color:rgba(255,42,42,.55)}
+    .opt.selected{
+      border-color:rgba(255,42,42,.85);
+      background:rgba(255,42,42,.10);
+      box-shadow:0 18px 60px rgba(255,42,42,.10);
+    }
+    .opt b{display:block;font-size:13px;margin-bottom:2px}
+    .opt span{display:block;color:var(--muted);font-size:12px;line-height:1.55}
 
-    .faq{display:flex;flex-direction:column;gap:10px}
-    details{
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.03);
-      border-radius: var(--r1);
+    .btn{
+      width:100%;
+      margin-top:14px;
+      padding:16px;
+      border-radius:16px;
+      border:0;
+      font-weight:900;
+      font-size:15px;
+      background:linear-gradient(135deg,var(--red),var(--red2));
+      color:#fff;
+      cursor:pointer;
+      transition:transform .12s ease, filter .12s ease;
+    }
+    .btn:hover{transform:translateY(-1px)}
+    .btn:active{transform:translateY(0px) scale(.99)}
+    .btn:disabled{opacity:.5;cursor:not-allowed;filter:saturate(.7)}
+
+    .timerBox{
+      margin-top:12px;
       padding:12px 12px;
+      border-radius:16px;
+      background:rgba(255,42,42,.07);
+      border:1px dashed rgba(255,42,42,.35);
+      display:flex;justify-content:space-between;align-items:center;
+      gap:10px;
+      font-size:12px;
+      color:var(--muted);
     }
-    summary{
-      cursor:pointer;font-weight:900;list-style:none;
-      display:flex;align-items:center;justify-content:space-between;gap:10px;
-      font-size:13px;
-    }
-    summary::-webkit-details-marker{display:none}
-    details p{margin-top:10px;color:var(--muted);font-size:12px;line-height:1.65}
-
-    .note{
-      margin-top:10px;
-      padding:12px;border-radius:16px;
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(0,0,0,.22);
+    .timerBox b{color:var(--text)}
+    .proof{
+      margin-top:12px;
       color:var(--muted);
       font-size:12px;
-      line-height:1.65;
+      line-height:1.6;
     }
 
-    .foot{
-      padding:18px 0 92px;
-      color:var(--muted);
-      font-size:11px;
-      line-height:1.65;
-      border-top:1px solid var(--line);
-      margin-top:8px;
+    .heroimg{
+      height:210px;
+      background:
+        linear-gradient(rgba(0,0,0,.35),rgba(0,0,0,.88)),
+        url('https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=1400&q=80') center/cover;
     }
-
-    .sticky{
-      position:fixed;left:0;right:0;bottom:0;
-      z-index:60;
-      background: rgba(7,7,10,.82);
-      backdrop-filter: blur(14px);
-      border-top:1px solid var(--line);
-    }
-    .sticky .inner{
-      max-width:var(--max);margin:0 auto;padding:10px 16px;
-      display:flex;align-items:center;justify-content:space-between;gap:12px;
-    }
-    .sticky .left{display:flex;flex-direction:column;gap:1px}
-    .sticky .left b{font-size:12px}
-    .sticky .left span{font-size:11px;color:var(--muted)}
-    .sticky .right a{min-width:160px}
 
     @media(min-width:720px){
-      h1{font-size:36px}
-      .wrap{padding:0 18px}
-      .btn{width:auto}
-      .grid{grid-template-columns: 1fr 1fr}
-      .socialProof{grid-template-columns:1fr 1fr}
-      .sticky .right a{min-width:240px}
+      .pad{padding:22px}
+      h1{font-size:30px}
     }
   </style>
 </head>
 
 <body>
-  <header class="topbar">
-    <div class="wrap">
-      <div class="inner">
-        <div class="brand">
-          <span class="pill">ACESSO VITALÍCIO</span>
-          <span>Condição Especial</span>
-        </div>
-        <a class="btn btn-primary" href="#assinar">Liberar acesso</a>
-      </div>
-    </div>
-  </header>
-
-  <main>
-    <section class="hero">
-      <div class="wrap">
-        <div class="card">
-          <div class="pad">
-            <div class="kicker">
-              <span class="dot"></span>
-              <span>Trilha prática • Templates • Execução guiada</span>
-            </div>
-
-            <h1>
-              Você não precisa de mais informação.
-              <span style="color:var(--red)">Você precisa de direção</span> — e um plano simples pra executar.
-            </h1>
-
-            <p class="sub">
-              Acesso vitalício com o essencial pra você parar de travar, sair do ciclo “começa e para” e entrar em execução com clareza.
-              Sem promessa milagrosa — só estrutura.
-            </p>
-
-            <div class="grid">
-              <div class="mini">
-                <div class="tick" aria-hidden="true">
-                  <svg viewBox="0 0 24 24"><path d="M9.0 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg>
-                </div>
-                <div>
-                  <b>Trilha de execução</b>
-                  <span>Passo a passo curto: fazer hoje, não “um dia”.</span>
-                </div>
-              </div>
-
-              <div class="mini">
-                <div class="tick" aria-hidden="true">
-                  <svg viewBox="0 0 24 24"><path d="M9.0 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg>
-                </div>
-                <div>
-                  <b>Templates prontos</b>
-                  <span>Copiar, adaptar e aplicar. Sem travar na forma.</span>
-                </div>
-              </div>
-
-              <div class="mini">
-                <div class="tick" aria-hidden="true">
-                  <svg viewBox="0 0 24 24"><path d="M9.0 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg>
-                </div>
-                <div>
-                  <b>Acesso vitalício</b>
-                  <span>Compra única. Sem mensalidade. Sem enrolação.</span>
-                </div>
-              </div>
-
-              <div class="mini">
-                <div class="tick" aria-hidden="true">
-                  <svg viewBox="0 0 24 24"><path d="M9.0 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg>
-                </div>
-                <div>
-                  <b>Entrega imediata</b>
-                  <span>Após confirmação do pagamento, acesso liberado.</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- OFERTA -->
-            <div class="section" id="assinar">
-              <div class="priceBox">
-                <div class="priceTop">
-                  <div>
-                    <div class="strike">de R$ 197</div>
-                    <div class="price">R$ 27</div>
-                    <div class="per">
-                      compra única • acesso vitalício • condição da turma<br>
-                      <span style="color:var(--green);font-weight:900">Upsells 1-click aparecem após a compra (Kiwify)</span>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="list" style="margin-top:12px">
-                  <div class="li">
-                    <div class="tick" aria-hidden="true">
-                      <svg viewBox="0 0 24 24"><path d="M9.0 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg>
-                    </div>
-                    <div><b>Conteúdo direto</b> (sem “encher linguiça”)</div>
-                  </div>
-                  <div class="li">
-                    <div class="tick" aria-hidden="true">
-                      <svg viewBox="0 0 24 24"><path d="M9.0 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg>
-                    </div>
-                    <div><b>Templates</b> para acelerar aplicação</div>
-                  </div>
-                  <div class="li">
-                    <div class="tick" aria-hidden="true">
-                      <svg viewBox="0 0 24 24"><path d="M9.0 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg>
-                    </div>
-                    <div><b>Garantia legal</b> (você define na Kiwify)</div>
-                  </div>
-                </div>
-
-                <!-- ✅ COLE AQUI O LINK DO CHECKOUT DA KIWIFY -->
-                <a class="btn btn-primary" id="checkoutBtn"
-                   href="COLE_AQUI_SEU_LINK_DA_KIWIFY"
-                   target="_blank" rel="noopener">
-                  Liberar acesso vitalício agora
-                </a>
-
-                <div class="countdown" aria-live="polite">
-                  <div class="txt">
-                    <b style="color:var(--text)">Condição especial</b><br>
-                    expira automaticamente.
-                  </div>
-                  <div class="timer" id="timer">00:00:00</div>
-                </div>
-
-                <div class="note">
-                  <b style="color:var(--text)">Importante:</b> nada aqui é promessa de resultado.
-                  Resultado depende da sua execução e variáveis externas.
-                </div>
-              </div>
-            </div>
-
-            <!-- PROVAS (genéricas – você pode trocar nomes/prints depois) -->
-            <div class="section">
-              <h2>O que muda quando você para de travar</h2>
-              <div class="socialProof">
-                <div class="quote">
-                  <div class="name">
-                    <b>“Direto ao ponto.”</b>
-                    <span class="stars">★★★★★</span>
-                  </div>
-                  <p>“Eu vivia começando e parando. Com a trilha e os templates, parei de perder tempo e comecei a executar.”</p>
-                </div>
-                <div class="quote">
-                  <div class="name">
-                    <b>“Sem enrolação.”</b>
-                    <span class="stars">★★★★★</span>
-                  </div>
-                  <p>“O que eu precisava era de direção. Não era falta de esforço. Era falta de método.”</p>
-                </div>
-                <div class="quote">
-                  <div class="name">
-                    <b>“Objetivo e prático.”</b>
-                    <span class="stars">★★★★★</span>
-                  </div>
-                  <p>“Consegui organizar o que fazer primeiro e o que parar de fazer. Isso muda o jogo.”</p>
-                </div>
-                <div class="quote">
-                  <div class="name">
-                    <b>“Valeu o acesso.”</b>
-                    <span class="stars">★★★★★</span>
-                  </div>
-                  <p>“Acesso vitalício por 27 é absurdo. Peguei e já apliquei no mesmo dia.”</p>
-                </div>
-              </div>
-            </div>
-
+  <div class="wrap">
+    <div class="card" role="region" aria-label="Diagnóstico rápido">
+      <div class="pad">
+        <div class="top">
+          <div class="badge" id="stepBadge">ETAPA 1 DE 3</div>
+          <div class="miniHint">
+            <div><b style="color:#fff">Tempo médio:</b> 20s</div>
+            <div>Responda e libere o acesso</div>
           </div>
         </div>
 
-        <!-- FAQ -->
-        <div class="section">
-          <div class="card">
-            <div class="pad">
-              <h2>FAQ (rápido)</h2>
-              <div class="faq">
-                <details>
-                  <summary>Como recebo o acesso?</summary>
-                  <p>Após o pagamento na Kiwify, você recebe as instruções de acesso/entrega conforme você configurar no produto (arquivo, área de membros, grupo, etc.).</p>
-                </details>
-                <details>
-                  <summary>Por que tem upsell depois?</summary>
-                  <p>Porque alguns complementos aceleram resultado (ex.: templates avançados / plano de 30 dias). Eles aparecem após a compra, em 1 clique, sem atrapalhar o acesso principal.</p>
-                </details>
-                <details>
-                  <summary>Isso garante resultado?</summary>
-                  <p>Não. É direção e estrutura. Resultado depende de execução e variáveis externas.</p>
-                </details>
-                <details>
-                  <summary>Posso pedir reembolso?</summary>
-                  <p>Você define e exibe a garantia dentro da Kiwify, de forma transparente.</p>
-                </details>
-              </div>
+        <div class="progress" aria-hidden="true"><div id="bar"></div></div>
 
-              <div class="note">
-                <b style="color:var(--text)">Dica:</b> coloque prints reais depois (depoimentos, resultados, bastidores). Isso aumenta MUITO conversão.
-              </div>
-            </div>
-          </div>
+        <h1 id="title">Você quer evoluir de verdade?</h1>
+        <p class="sub" id="subtitle">Responda 3 perguntas rápidas e libere a condição especial.</p>
+
+        <div class="options" id="options"></div>
+
+        <button class="btn" id="continueBtn" disabled>Continuar</button>
+
+        <div class="timerBox" aria-live="polite">
+          <span>Condição desta página expira em:</span>
+          <span><b id="timer">10:00</b></span>
         </div>
 
-        <footer class="foot">
-          <div class="wrap">
-            <div style="font-weight:900;color:var(--text)">Acesso Vitalício</div>
-            <div style="margin-top:6px">Trilha prática • Templates • Execução guiada</div>
-            <div style="margin-top:10px">© <span id="year"></span> • Todos os direitos reservados.</div>
-          </div>
-        </footer>
+        <div class="proof">
+          🔴 Ambiente fechado • Acesso liberado apenas após conclusão do diagnóstico<br>
+          ⚠️ Se você sair agora, pode perder a condição desta turma.
+        </div>
+      </div>
 
-      </div>
-    </section>
-  </main>
-
-  <!-- Sticky CTA -->
-  <div class="sticky" role="region" aria-label="Barra fixa de compra">
-    <div class="inner">
-      <div class="left">
-        <b>Liberar acesso vitalício</b>
-        <span>R$ 27 • condição especial</span>
-      </div>
-      <div class="right">
-        <a class="btn btn-primary" id="stickyBtn"
-           href="COLE_AQUI_SEU_LINK_DA_KIWIFY"
-           target="_blank" rel="noopener">
-          Comprar agora
-        </a>
-      </div>
+      <div class="heroimg" aria-hidden="true"></div>
     </div>
   </div>
 
@@ -508,34 +214,103 @@
     // PIXEL (opcional)
     try{ if(window.fbq){ fbq('track','ViewContent'); } }catch(e){}
 
-    // ano
-    document.getElementById('year').textContent = new Date().getFullYear();
+    const steps = [
+      {
+        title:"Você quer evoluir de verdade?",
+        subtitle:"Escolha a opção mais próxima do seu momento atual.",
+        options:[
+          {t:"Sim, estou pronto para executar.", d:"Quero um plano claro e aplicado."},
+          {t:"Estou cansado de começar e parar.", d:"Preciso destravar consistência."},
+          {t:"Quero mudar meu nível este mês.", d:"Chega de ficar no mesmo lugar."}
+        ]
+      },
+      {
+        title:"Qual seu maior bloqueio hoje?",
+        subtitle:"Isso define o caminho mais rápido pra você.",
+        options:[
+          {t:"Falta de foco.", d:"Distração e excesso de informação."},
+          {t:"Falta de método.", d:"Sem passo a passo, eu travo."},
+          {t:"Falta de ambiente.", d:"Sem comunidade, eu caio."}
+        ]
+      },
+      {
+        title:"Você está disposto a aplicar o que aprender?",
+        subtitle:"Execução decide. Conteúdo sozinho não muda nada.",
+        options:[
+          {t:"Sim, 100%.", d:"Quero resultado por mérito e ação."},
+          {t:"Se eu tiver direção clara.", d:"Eu só preciso do caminho certo."},
+          {t:"Sim, preciso apenas de orientação.", d:"Sem enrolação: aplicar e avançar."}
+        ]
+      }
+    ];
 
-    // ✅ Dispara InitiateCheckout ao clicar nos botões (melhor pro Meta)
-    function bindCheckout(id){
-      const el = document.getElementById(id);
-      if(!el) return;
-      el.addEventListener('click', () => {
-        try{ if(window.fbq){ fbq('track','InitiateCheckout'); } }catch(e){}
+    let currentStep = 0;
+    let selectedIndex = null;
+
+    const title = document.getElementById("title");
+    const subtitle = document.getElementById("subtitle");
+    const optionsDiv = document.getElementById("options");
+    const btn = document.getElementById("continueBtn");
+    const bar = document.getElementById("bar");
+    const stepBadge = document.getElementById("stepBadge");
+
+    function renderStep(){
+      const total = steps.length;
+      stepBadge.textContent = `ETAPA ${Math.min(currentStep+1,total)} DE 3`;
+
+      title.textContent = steps[currentStep].title;
+      subtitle.textContent = steps[currentStep].subtitle;
+
+      selectedIndex = null;
+      btn.disabled = true;
+
+      optionsDiv.innerHTML = "";
+      steps[currentStep].options.forEach((o, idx) => {
+        const div = document.createElement("div");
+        div.className = "opt";
+        div.innerHTML = `<b>${o.t}</b><span>${o.d}</span>`;
+        div.addEventListener("click", () => {
+          document.querySelectorAll(".opt").forEach(x => x.classList.remove("selected"));
+          div.classList.add("selected");
+          selectedIndex = idx;
+          btn.disabled = false;
+        });
+        optionsDiv.appendChild(div);
       });
-    }
-    bindCheckout('checkoutBtn');
-    bindCheckout('stickyBtn');
 
-    // Countdown (12h)
-    const end = Date.now() + 12*60*60*1000;
-    const timerEl = document.getElementById('timer');
-    function pad(n){ return String(n).padStart(2,'0'); }
-    function tick(){
-      const t = Math.max(0, end - Date.now());
-      const h = Math.floor(t / (1000*60*60));
-      const m = Math.floor((t % (1000*60*60)) / (1000*60));
-      const s = Math.floor((t % (1000*60)) / 1000);
-      timerEl.textContent = `${pad(h)}:${pad(m)}:${pad(s)}`;
-      if(t <= 0) timerEl.textContent = "ENCERRADO";
+      bar.style.width = (currentStep / total) * 100 + "%";
     }
-    setInterval(tick, 1000);
-    tick();
+
+    btn.addEventListener("click", () => {
+      if(selectedIndex === null) return;
+
+      currentStep++;
+      if(currentStep < steps.length){
+        renderStep();
+      }else{
+        bar.style.width = "100%";
+        btn.disabled = true;
+        btn.textContent = "Analisando respostas...";
+        try{ if(window.fbq){ fbq('track','Lead'); } }catch(e){}
+        setTimeout(() => {
+          // Vai para a sua landing
+          window.location.href = "./inicio.html";
+        }, 900);
+      }
+    });
+
+    renderStep();
+
+    // TIMER PSICOLÓGICO
+    let time = 600; // 10:00
+    const timer = document.getElementById("timer");
+    setInterval(() => {
+      if(time <= 0) return;
+      time--;
+      const min = Math.floor(time/60);
+      const sec = time % 60;
+      timer.textContent = `${min}:${sec<10 ? "0" : ""}${sec}`;
+    }, 1000);
   </script>
 </body>
 </html>
